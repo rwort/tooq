@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooq — Every pet finds their way home</title>
+  <meta name="description" content="Tooq is a pet tracking app: a smart tag on your pet's collar links to a public profile so whoever finds them can reach you in seconds. Developed and owned by Tanami Company, Kuwait.">
+  <link rel="icon" type="image/png" href="assets/app_icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #452F6B;
+      --primary: #5A3E8B;
+      --primary-light: #7B5CB4;
+      --primary-pale: #EDE4FA;
+      --accent: #F2BB37;
+      --accent-pale: #FCF4DC;
+      --accent-soft: #F8E5A9;
+      --cream: #FAEFCC;
+      --card: #FFFCF2;
+      --surface: #FBF5E4;
+      --border-light: #EBDFC0;
+      --text-secondary: #604C86;
+      --text-body: #75639A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--primary-dark);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- header ---------- */
+    header {
+      padding: 20px 0;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo { height: 44px; width: auto; }
+    .header-cta {
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 999px;
+      transition: background 0.15s ease;
+    }
+    .header-cta:hover { background: var(--primary-dark); }
+
+    /* ---------- hero ---------- */
+    .hero {
+      padding: 64px 0 80px;
+      text-align: center;
+    }
+    .hero-mark { height: 96px; width: auto; margin-bottom: 28px; }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      line-height: 1.15;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 span { color: var(--primary-light); }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary, .btn-secondary {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 800;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 1.05rem;
+      transition: transform 0.12s ease, background 0.15s ease;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-secondary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-secondary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .hero-note {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: var(--text-body);
+    }
+
+    /* ---------- how it works ---------- */
+    .how {
+      background: var(--primary);
+      color: #fff;
+      padding: 72px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 48px;
+      opacity: 0.85;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .step {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-weight: 900;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+    .step h3 { font-size: 1.15rem; margin-bottom: 8px; }
+    .step p { font-size: 0.95rem; opacity: 0.85; }
+
+    /* ---------- features ---------- */
+    .features { padding: 72px 0; }
+    .features .section-sub { color: var(--text-secondary); }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 26px 24px;
+    }
+    .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--primary-pale);
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+    .feature h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .feature p { font-size: 0.95rem; color: var(--text-body); }
+
+    /* ---------- about tanami ---------- */
+    .about {
+      padding: 24px 0 88px;
+    }
+    .about-card {
+      background: var(--accent-pale);
+      border: 1px solid var(--accent-soft);
+      border-radius: 24px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .about-card h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+    .about-card > p {
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto 28px;
+    }
+    .about-address {
+      display: inline-block;
+      background: var(--card);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 20px 28px;
+      text-align: left;
+    }
+    .about-address strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+    .about-address p {
+      font-size: 0.95rem;
+      color: var(--text-body);
+    }
+
+    /* ---------- footer ---------- */
+    footer {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 48px 0 32px;
+    }
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .footer-logo { height: 40px; width: auto; }
+    .footer-top p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      max-width: 480px;
+    }
+    .footer-legal {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 24px;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      line-height: 1.8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <img class="header-logo" src="assets/wordmark_purple.png" alt="Tooq">
+      <a class="header-cta" href="#get-the-app">Get the app</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <img class="hero-mark" src="assets/mark_purple.png" alt="Tooq dog and cat mark">
+      <h1>Every pet finds<br>their <span>way home</span></h1>
+      <p>
+        Tooq links a smart tag on your pet's collar to a profile you control.
+        If your pet ever gets lost, whoever finds them can open the profile with
+        the tag's PIN and reach you in seconds — no app required on their side.
+      </p>
+      <div class="hero-buttons" id="get-the-app">
+        <a class="btn-primary" href="#">Download for iOS</a>
+        <a class="btn-secondary" href="#">Download for Android</a>
+      </div>
+      <p class="hero-note">Coming soon to the App Store and Google Play.</p>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container">
+      <h2 class="section-title">How Tooq works</h2>
+      <p class="section-sub">Three simple steps between a lost pet and a happy reunion.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Tag your pet</h3>
+          <p>Attach the Tooq tag to your pet's collar and link its PIN to their profile in the app.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Someone finds them</h3>
+          <p>The finder enters the tag's PIN on Tooq and instantly sees your pet's public profile.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>You're reunited</h3>
+          <p>They contact you through the details you chose to share — you stay in control of your privacy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Everything your pet needs, in one place</h2>
+      <p class="section-sub">More than a tag — Tooq is a home for your pet's daily life.</p>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">🐾</div>
+          <h3>Pet profiles</h3>
+          <p>Photos, breed, age, and everything that makes your pet who they are — for all your pets.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🩺</div>
+          <h3>Health notes</h3>
+          <p>Keep vet visits, vaccinations, and medications organized in one tidy health record.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⏰</div>
+          <h3>Smart reminders</h3>
+          <p>Never miss a vaccine booster, grooming day, or medication dose again.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📢</div>
+          <h3>Lost pet reports</h3>
+          <p>Report a lost pet with one tap and turn every Tooq tag scan into a chance to bring them home.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>Privacy first</h3>
+          <p>You decide exactly which contact details a finder can see. Nothing is shared without your say.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✨</div>
+          <h3>AI pet assistant</h3>
+          <p>Ask anything about your pet's care and get answers grounded in their own health history.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <div class="about-card">
+        <h2>Proudly built in Kuwait 🇰🇼</h2>
+        <p>
+          Tooq is an app developed and owned by <strong>Tanami Company</strong>,
+          a Kuwaiti company on a mission to keep pets and their families together.
+        </p>
+        <div class="about-address">
+          <strong>Tanami Company</strong>
+          <p>
+            Shop 2, Heirs of Abdullah Khalaf Sayer Al-Harbi Building<br>
+            Street 14, Block 4, Mangaf<br>
+            Al-Ahmadi Governorate, Kuwait
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <img class="footer-logo" src="assets/wordmark_white.png" alt="Tooq">
+        <p>A smart tag, a profile, and a way home. Tooq keeps you and your pet connected — wherever their paws take them.</p>
+      </div>
+      <div class="footer-legal">
+        © 2026 Tanami Company. All rights reserved.<br>
+        Tooq is developed and owned by Tanami Company — Mangaf, Al-Ahmadi Governorate, Kuwait.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
