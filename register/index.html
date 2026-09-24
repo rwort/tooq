@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Tooq — For merchants and clinics</title>
+  <meta name="description" content="Pet shops, groomers and veterinary clinics: register your interest and the Tooq team will get in touch about joining the platform.">
+  <link rel="icon" type="image/png" href="../assets/app_icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #452F6B;
+      --primary: #5A3E8B;
+      --primary-light: #7B5CB4;
+      --primary-pale: #EDE4FA;
+      --accent: #F2BB37;
+      --accent-pale: #FCF4DC;
+      --accent-soft: #F8E5A9;
+      --cream: #FAEFCC;
+      --card: #FFFCF2;
+      --surface: #FBF5E4;
+      --border-light: #EBDFC0;
+      --text-secondary: #604C86;
+      --text-body: #75639A;
+      --error: #B3261E;
+      --success: #2E7D4F;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--primary-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img { max-width: 100%; }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    /* ---------- header ---------- */
+    header { padding: 20px 0; }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo { height: 44px; width: auto; }
+    .header-cta {
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 999px;
+      transition: background 0.15s ease;
+    }
+    .header-cta:hover { background: var(--primary-dark); }
+
+    /* ---------- intro ---------- */
+    main { flex: 1; }
+    .intro {
+      padding: 40px 0 24px;
+      text-align: center;
+    }
+    .intro-mark { height: 72px; width: auto; margin-bottom: 20px; }
+    .intro h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.75rem);
+      font-weight: 900;
+      line-height: 1.15;
+      max-width: 680px;
+      margin: 0 auto 14px;
+    }
+    .intro h1 span { color: var(--primary-light); }
+    .intro p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ---------- form card ---------- */
+    .form-section { padding: 16px 0 72px; }
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      padding: 36px 32px;
+      max-width: 640px;
+      margin: 0 auto;
+      box-shadow: 0 12px 40px rgba(69, 47, 107, 0.08);
+    }
+    @media (max-width: 520px) {
+      .form-card { padding: 28px 20px; border-radius: 18px; }
+    }
+
+    .field { margin-bottom: 20px; }
+    .field label, .field .label {
+      display: block;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .field .optional {
+      font-weight: 600;
+      color: var(--text-body);
+      font-size: 0.85rem;
+    }
+    .field input, .field textarea {
+      width: 100%;
+      font: inherit;
+      font-size: 1rem;
+      color: var(--primary-dark);
+      background: #fff;
+      border: 2px solid var(--border-light);
+      border-radius: 14px;
+      padding: 12px 16px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .field input:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 4px var(--primary-pale);
+    }
+    .field.invalid input, .field.invalid textarea { border-color: var(--error); }
+    .field-error {
+      display: none;
+      color: var(--error);
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+    .field.invalid .field-error { display: block; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 520px) { .row { grid-template-columns: 1fr; gap: 0; } }
+
+    /* kind picker: two big pills */
+    .kinds { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .kinds input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .kinds label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      background: var(--surface);
+      border: 2px solid var(--border-light);
+      border-radius: 16px;
+      padding: 16px 12px;
+      text-align: center;
+      font-weight: 800;
+      margin: 0;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .kinds label small { font-weight: 600; color: var(--text-body); font-size: 0.85rem; }
+    .kinds label .emoji { font-size: 1.6rem; line-height: 1; }
+    .kinds input:checked + label {
+      background: var(--primary-pale);
+      border-color: var(--primary-light);
+    }
+    .kinds input:focus-visible + label { box-shadow: 0 0 0 4px var(--primary-pale); }
+
+    /*
+     * Honeypot. Pushed off-screen rather than display:none, because some bots skip
+     * hidden inputs but fill anything with a name. A person never sees it; if it comes
+     * back filled, the API answers success and keeps nothing.
+     */
+    .extra-field {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .consent {
+      font-size: 0.875rem;
+      color: var(--text-body);
+      margin: 4px 0 20px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 15px 32px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      transition: transform 0.12s ease, opacity 0.15s ease;
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-primary:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+    .form-status {
+      display: none;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .form-status.error { display: block; background: #FDECEB; color: var(--error); }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 12px 0;
+    }
+    .success .emoji { font-size: 3rem; margin-bottom: 12px; }
+    .success h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 10px; }
+    .success p { color: var(--text-secondary); max-width: 440px; margin: 0 auto 24px; }
+    .success a {
+      color: var(--primary);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .success a:hover { text-decoration: underline; }
+    .form-card.done form { display: none; }
+    .form-card.done .success { display: block; }
+
+    /* ---------- footer ---------- */
+    footer {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 48px 0 32px;
+    }
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .footer-logo { height: 40px; width: auto; }
+    .footer-top p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      max-width: 480px;
+    }
+    .footer-legal {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 24px;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      line-height: 1.8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a href="../"><img class="header-logo" src="../assets/wordmark_purple.png" alt="Tooq"></a>
+      <a class="header-cta" href="../#get-the-app">Get the app</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="container">
+        <img class="intro-mark" src="../assets/mark_purple.png" alt="Tooq dog and cat mark">
+        <h1>Join Tooq as a <span>merchant or clinic</span></h1>
+        <p>
+          Pet shops, groomers and veterinary clinics: leave your details and the Tooq team
+          will get in touch about bringing your business onto the platform.
+        </p>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="container">
+        <div class="form-card" id="card">
+          <form id="register-form" novalidate>
+
+            <div class="field" data-field="kind">
+              <span class="label">What are you?</span>
+              <div class="kinds">
+                <input type="radio" name="kind" id="kind-merchant" value="merchant" checked>
+                <label for="kind-merchant"><span class="emoji">🛍️</span>Merchant<small>Pet shop, groomer, supplier</small></label>
+                <input type="radio" name="kind" id="kind-clinic" value="clinic">
+                <label for="kind-clinic"><span class="emoji">🩺</span>Clinic<small>Veterinary clinic or hospital</small></label>
+              </div>
+              <div class="field-error"></div>
+            </div>
+
+            <div class="field" data-field="businessName">
+              <label for="businessName">Business name</label>
+              <input type="text" id="businessName" name="businessName" maxlength="120" autocomplete="organization" required>
+              <div class="field-error"></div>
+            </div>
+
+            <div class="field" data-field="contactName">
+              <label for="contactName">Contact person <span class="optional">(optional)</span></label>
+              <input type="text" id="contactName" name="contactName" maxlength="120" autocomplete="name">
+              <div class="field-error"></div>
+            </div>
+
+            <div class="row">
+              <div class="field" data-field="email">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required>
+                <div class="field-error"></div>
+              </div>
+              <div class="field" data-field="phone">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" maxlength="24" autocomplete="tel" placeholder="+965 6667 6522" required>
+                <div class="field-error"></div>
+              </div>
+            </div>
+
+            <div class="field" data-field="city">
+              <label for="city">City / area <span class="optional">(optional)</span></label>
+              <input type="text" id="city" name="city" maxlength="120" autocomplete="address-level2">
+              <div class="field-error"></div>
+            </div>
+
+            <div class="field" data-field="message">
+              <label for="message">Anything you'd like us to know? <span class="optional">(optional)</span></label>
+              <textarea id="message" name="message" maxlength="2000"></textarea>
+              <div class="field-error"></div>
+            </div>
+
+            <div class="extra-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <p class="consent">
+              By sending this form you agree that Tanami Company may contact you about Tooq.
+              We never share your details with anyone else.
+            </p>
+
+            <button class="btn-primary" type="submit" id="submit">Register my interest</button>
+            <div class="form-status" id="status" role="alert"></div>
+          </form>
+
+          <div class="success">
+            <div class="emoji">🐾</div>
+            <h2>Thank you!</h2>
+            <p>We've received your details. Someone from the Tooq team will reach out soon.</p>
+            <a href="../">Back to tooq.ai</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <img class="footer-logo" src="../assets/wordmark_white.png" alt="Tooq">
+        <p>A smart tag, a profile, and a way home. Tooq keeps you and your pet connected — wherever their paws take them.</p>
+      </div>
+      <div class="footer-legal">
+        © 2026 Tanami Company. All rights reserved.<br>
+        Tooq is developed and owned by Tanami Company — Mangaf, Al-Ahmadi Governorate, Kuwait.<br>
+        Contact: <a href="tel:+96566676522" style="color: inherit;">+965 6667 6522</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // The Tooq API (the ApiCloudFrontUrl output of the deployed stack). Endpoint docs:
+    // tooq-backend/docs/api.md, "Merchant registration".
+    const API_BASE = "https://d18iikljzzylqe.cloudfront.net";
+
+    const form = document.getElementById("register-form");
+    const card = document.getElementById("card");
+    const submit = document.getElementById("submit");
+    const status = document.getElementById("status");
+    // The API ignores submissions faster than a person could type; measured here so
+    // there is no clock to disagree with.
+    const openedAt = Date.now();
+
+    const messages = {
+      businessName: "Please enter your business name (at least 2 characters).",
+      email: "Please enter a valid email address.",
+      phone: "Please enter a valid phone number, e.g. +965 6667 6522.",
+    };
+
+    function clearErrors() {
+      form.querySelectorAll(".field.invalid").forEach((el) => el.classList.remove("invalid"));
+      status.className = "form-status";
+      status.textContent = "";
+    }
+
+    function showFieldError(name, message) {
+      const field = form.querySelector(`.field[data-field="${name}"]`);
+      if (!field) return false;
+      field.classList.add("invalid");
+      field.querySelector(".field-error").textContent = message;
+      return true;
+    }
+
+    function showStatus(message) {
+      status.textContent = message;
+      status.className = "form-status error";
+    }
+
+    function optional(value) {
+      const v = value.trim();
+      return v === "" ? undefined : v;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearErrors();
+
+      const body = {
+        kind: form.kind.value,
+        businessName: form.businessName.value.trim(),
+        contactName: optional(form.contactName.value),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        city: optional(form.city.value),
+        message: optional(form.message.value),
+        website: form.website.value,
+        elapsedMs: Date.now() - openedAt,
+      };
+
+      // Cheap local checks so the common mistakes never need a round trip.
+      let ok = true;
+      if (body.businessName.length < 2) ok = showFieldError("businessName", messages.businessName) && false;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) ok = showFieldError("email", messages.email) && false;
+      if (body.phone.replace(/\D/g, "").length < 7) ok = showFieldError("phone", messages.phone) && false;
+      if (!ok) {
+        form.querySelector(".field.invalid input")?.focus();
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = "Sending…";
+      try {
+        const res = await fetch(`${API_BASE}/api/public/merchants`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+
+        if (res.status === 201) {
+          card.classList.add("done");
+          card.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+
+        let payload = null;
+        try { payload = await res.json(); } catch (_) { /* no body */ }
+        const error = payload && payload.error ? payload.error : null;
+
+        if (res.status === 400 && error && Array.isArray(error.details)) {
+          let shown = false;
+          for (const d of error.details) {
+            const name = d.field || "";
+            shown = showFieldError(name, messages[name] || d.message || "Please check this field.") || shown;
+          }
+          if (!shown) showStatus("Please check the form and try again.");
+          form.querySelector(".field.invalid input, .field.invalid textarea")?.focus();
+        } else if (res.status === 400 && error && error.details && error.details.field === "phone") {
+          showFieldError("phone", messages.phone);
+          form.phone.focus();
+        } else if (res.status === 409) {
+          showFieldError("email", "This email is already registered with us. We'll be in touch!");
+          form.email.focus();
+        } else if (res.status === 429) {
+          showStatus("Too many registrations from your network right now. Please try again in an hour.");
+        } else {
+          showStatus("Something went wrong on our side. Please try again in a moment.");
+        }
+      } catch (_) {
+        showStatus("We couldn't reach the server. Check your connection and try again.");
+      } finally {
+        submit.disabled = false;
+        submit.textContent = "Register my interest";
+      }
+    });
+  </script>
+
+</body>
+</html>
