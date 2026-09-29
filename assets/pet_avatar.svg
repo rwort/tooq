@@ -1,0 +1,31 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Illustration / TOOQ Pet Avatar / Detailed">
+<path id="Vector" d="M110 208C164.124 208 208 164.124 208 110C208 55.8761 164.124 12 110 12C55.8761 12 12 55.8761 12 110C12 164.124 55.8761 208 110 208Z" stroke="#16B8A6" stroke-width="3"/>
+<path id="Vector_2" d="M110 200C159.706 200 200 159.706 200 110C200 60.2944 159.706 20 110 20C60.2944 20 20 60.2944 20 110C20 159.706 60.2944 200 110 200Z" fill="url(#paint0_radial_0_6)" stroke="white" stroke-width="6"/>
+<path id="Vector_3" d="M72 188C76 157 89 140 110 138C131 140 144 157 148 188C127 199 93 199 72 188Z" fill="#FFF6EE" stroke="#0E7C72" stroke-width="5" stroke-linejoin="round"/>
+<path id="Vector_4" d="M71 72C54 75 43 90 43 106C43 120 53 135 66 145C73 150 82 146 83 137L88 85L71 72Z" fill="#FFB49F" stroke="#0E7C72" stroke-width="6" stroke-linejoin="round"/>
+<path id="Vector_5" d="M149 72C166 75 177 90 177 106C177 120 167 135 154 145C147 150 138 146 137 137L132 85L149 72Z" fill="#BFEAE4" stroke="#0E7C72" stroke-width="6" stroke-linejoin="round"/>
+<path id="Vector_6" d="M86 59C96 50 124 50 134 59C153 61 163 74 163 93C163 116 154 150 138 163C124 174 96 174 82 163C66 150 57 116 57 93C57 74 67 61 86 59Z" fill="#FFF6EE" stroke="#0E7C72" stroke-width="6" stroke-linejoin="round"/>
+<path id="Vector_7" opacity="0.85" d="M98 58C103 54 117 53 123 58L118 119C116 131 104 134 99 123C94 111 92 74 98 58Z" fill="#FFE8D9"/>
+<path id="Vector_8" d="M76 99C81 93 89 91 96 94" stroke="#0E7C72" stroke-width="5" stroke-linecap="round"/>
+<path id="Vector_9" d="M124 94C131 91 139 93 144 99" stroke="#0E7C72" stroke-width="5" stroke-linecap="round"/>
+<path id="Vector_10" d="M87 120C91.9706 120 96 115.971 96 111C96 106.029 91.9706 102 87 102C82.0294 102 78 106.029 78 111C78 115.971 82.0294 120 87 120Z" fill="#0E7C72"/>
+<path id="Vector_11" d="M133 120C137.971 120 142 115.971 142 111C142 106.029 137.971 102 133 102C128.029 102 124 106.029 124 111C124 115.971 128.029 120 133 120Z" fill="#0E7C72"/>
+<path id="Vector_12" d="M90 111C91.6569 111 93 109.657 93 108C93 106.343 91.6569 105 90 105C88.3431 105 87 106.343 87 108C87 109.657 88.3431 111 90 111Z" fill="white"/>
+<path id="Vector_13" d="M136 111C137.657 111 139 109.657 139 108C139 106.343 137.657 105 136 105C134.343 105 133 106.343 133 108C133 109.657 134.343 111 136 111Z" fill="white"/>
+<path id="Vector_14" d="M97 128C97 120 103 115 110 115C117 115 123 120 123 128C123 135 117 140 110 140C103 140 97 135 97 128Z" fill="#FF7A59" stroke="#0E7C72" stroke-width="4"/>
+<path id="Vector_15" d="M104 123C108 121 113 121 117 123" stroke="#FFD8CC" stroke-width="3" stroke-linecap="round"/>
+<path id="Vector_16" d="M110 140V144" stroke="#0E7C72" stroke-width="4" stroke-linecap="round"/>
+<path id="Vector_17" d="M85 147C90 157 106 156 110 144C114 156 130 157 135 147" stroke="#0E7C72" stroke-width="5" stroke-linecap="round"/>
+<path id="Vector_18" d="M87 166C102 174 118 174 133 166" stroke="#16B8A6" stroke-width="8" stroke-linecap="round"/>
+<path id="Vector_19" d="M110 185C116.075 185 121 180.075 121 174C121 167.925 116.075 163 110 163C103.925 163 99 167.925 99 174C99 180.075 103.925 185 110 185Z" fill="#FF7A59" stroke="#0E7C72" stroke-width="3"/>
+<path id="Vector_20" d="M106 174H114M110 170V178" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_6" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(102 92) rotate(54) scale(128)">
+<stop offset="0.3" stop-color="#FFF6EE"/>
+<stop offset="0.72" stop-color="#D7F3EF"/>
+<stop offset="1" stop-color="#FFD8CC"/>
+</radialGradient>
+</defs>
+</svg>

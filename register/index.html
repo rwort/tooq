@@ -3,140 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Join Tooq — For merchants and clinics</title>
-  <meta name="description" content="Pet shops, groomers and veterinary clinics: register your interest and the Tooq team will get in touch about joining the platform.">
+  <title>Join TOOQ — For merchants and clinics</title>
+  <meta name="description" content="Pet shops, groomers and veterinary clinics: register your interest and the TOOQ team will get in touch about joining the platform.">
+  <meta name="theme-color" content="#FFF6EE">
+  <meta name="apple-itunes-app" content="app-id=6792516587">
   <link rel="icon" type="image/png" href="../assets/app_icon.png">
+  <link rel="apple-touch-icon" href="../assets/app_icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
   <style>
-    :root {
-      --primary-dark: #452F6B;
-      --primary: #5A3E8B;
-      --primary-light: #7B5CB4;
-      --primary-pale: #EDE4FA;
-      --accent: #F2BB37;
-      --accent-pale: #FCF4DC;
-      --accent-soft: #F8E5A9;
-      --cream: #FAEFCC;
-      --card: #FFFCF2;
-      --surface: #FBF5E4;
-      --border-light: #EBDFC0;
-      --text-secondary: #604C86;
-      --text-body: #75639A;
-      --error: #B3261E;
-      --success: #2E7D4F;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
-      background: var(--cream);
-      color: var(--primary-dark);
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    img { max-width: 100%; }
-
-    .container {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 24px;
-      width: 100%;
-    }
-
-    /* ---------- header ---------- */
-    header { padding: 20px 0; }
-    header .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .header-logo { height: 44px; width: auto; }
-    .header-cta {
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 10px 22px;
-      border-radius: 999px;
-      transition: background 0.15s ease;
-    }
-    .header-cta:hover { background: var(--primary-dark); }
-
     /* ---------- intro ---------- */
-    main { flex: 1; }
     .intro {
-      padding: 40px 0 24px;
+      position: relative;
+      overflow: hidden;
+      background: var(--g-splash);
+      padding: 40px 0 120px;
       text-align: center;
     }
-    .intro-mark { height: 72px; width: auto; margin-bottom: 20px; }
-    .intro h1 {
-      font-size: clamp(1.8rem, 4.5vw, 2.75rem);
-      font-weight: 900;
-      line-height: 1.15;
-      max-width: 680px;
-      margin: 0 auto 14px;
+    .intro::before {
+      content: "";
+      position: absolute;
+      top: -220px;
+      right: -120px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 122, 89, 0.22) 0%, rgba(255, 122, 89, 0) 70%);
+      pointer-events: none;
     }
-    .intro h1 span { color: var(--primary-light); }
-    .intro p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
+    .intro .container { position: relative; }
+    .intro-avatar { width: 120px; height: 120px; margin: 0 auto 16px; }
+    .intro h1 { max-width: 680px; margin: 0 auto 12px; }
+    .intro h1 span { color: var(--teal-dark); }
+    .intro .lead { max-width: 560px; margin: 0 auto; }
+
+    /* ---------- form card ---------- */
+    .form-section { padding: 0 0 56px; margin-top: -80px; position: relative; }
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-card);
+      box-shadow: var(--shadow-card);
+      padding: 32px;
       max-width: 600px;
       margin: 0 auto;
     }
-
-    /* ---------- form card ---------- */
-    .form-section { padding: 16px 0 72px; }
-    .form-card {
-      background: var(--card);
-      border: 1px solid var(--border-light);
-      border-radius: 24px;
-      padding: 36px 32px;
-      max-width: 640px;
-      margin: 0 auto;
-      box-shadow: 0 12px 40px rgba(69, 47, 107, 0.08);
+    .form-card > form > h2 {
+      font-size: 1.25rem;
+      margin-bottom: 4px;
     }
+    .form-card .supporting { margin-bottom: 22px; }
     @media (max-width: 520px) {
-      .form-card { padding: 28px 20px; border-radius: 18px; }
+      .intro { padding-bottom: 96px; }
+      .form-section { margin-top: -64px; }
+      .form-card { padding: 24px 18px; }
     }
 
-    .field { margin-bottom: 20px; }
-    .field label, .field .label {
+    .field { margin-bottom: 18px; }
+    .field label {
       display: block;
-      font-weight: 800;
-      font-size: 0.95rem;
-      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 6px;
     }
     .field input {
       width: 100%;
+      height: 52px;
       font: inherit;
       font-size: 1rem;
-      color: var(--primary-dark);
-      background: #fff;
-      border: 2px solid var(--border-light);
-      border-radius: 14px;
-      padding: 12px 16px;
+      color: var(--text);
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-input);
+      padding: 0 16px;
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
+    .field input::placeholder { color: var(--text-secondary); opacity: 0.7; }
     .field input:focus {
       outline: none;
-      border-color: var(--primary-light);
-      box-shadow: 0 0 0 4px var(--primary-pale);
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px var(--teal-soft);
     }
-    .field.invalid input { border-color: var(--error); }
+    .field.invalid input { border-color: var(--danger); box-shadow: none; }
     .field-error {
       display: none;
-      color: var(--error);
-      font-size: 0.875rem;
-      font-weight: 700;
+      color: var(--danger);
+      font-size: 0.8125rem;
+      font-weight: 600;
       margin-top: 6px;
     }
     .field.invalid .field-error { display: block; }
+    /* Phone numbers are always LTR Western digits. */
+    .field input[type="tel"] { direction: ltr; unicode-bidi: isolate; }
 
     /*
      * Honeypot. Pushed off-screen rather than display:none, because some bots skip
@@ -153,101 +113,84 @@
     }
 
     .consent {
-      font-size: 0.875rem;
-      color: var(--text-body);
-      margin: 4px 0 20px;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin: 2px 0 18px;
     }
 
-    .btn-primary {
-      display: inline-block;
-      width: 100%;
-      border: 0;
-      cursor: pointer;
-      font: inherit;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 15px 32px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--primary-dark);
-      transition: transform 0.12s ease, opacity 0.15s ease;
-    }
-    .btn-primary:hover { transform: translateY(-2px); }
-    .btn-primary:disabled { opacity: 0.6; cursor: wait; transform: none; }
+    .btn-submit { width: 100%; }
+    .btn-submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
 
     .form-status {
       display: none;
-      margin-top: 16px;
+      margin-top: 14px;
       padding: 12px 16px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 0.95rem;
+      border-radius: var(--r-input);
+      font-weight: 600;
+      font-size: 0.875rem;
     }
-    .form-status.error { display: block; background: #FDECEB; color: var(--error); }
+    .form-status.error { display: block; background: var(--danger-soft); color: var(--danger); }
 
+    /* ---------- success state ---------- */
     .success {
       display: none;
       text-align: center;
-      padding: 12px 0;
+      padding: 8px 0;
     }
-    .success .emoji { font-size: 3rem; margin-bottom: 12px; }
-    .success h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 10px; }
-    .success p { color: var(--text-secondary); max-width: 440px; margin: 0 auto 24px; }
-    .success a {
-      color: var(--primary);
-      font-weight: 800;
-      text-decoration: none;
+    .success .mark {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--teal-soft);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
     }
-    .success a:hover { text-decoration: underline; }
+    .success .mark svg { width: 34px; height: 34px; }
+    .success h2 { font-size: 1.5rem; margin-bottom: 8px; }
+    .success p { color: var(--text-secondary); max-width: 420px; margin: 0 auto 22px; }
     .form-card.done form { display: none; }
     .form-card.done .success { display: block; }
 
-    /* ---------- footer ---------- */
-    footer {
-      background: var(--primary-dark);
-      color: #fff;
-      padding: 48px 0 32px;
+    /* ---------- side note ---------- */
+    .why {
+      max-width: 600px;
+      margin: 28px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-    .footer-logo { height: 40px; width: auto; }
-    .footer-top p {
-      font-size: 0.95rem;
-      opacity: 0.8;
-      max-width: 480px;
-    }
-    .footer-legal {
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      padding-top: 24px;
-      font-size: 0.85rem;
-      opacity: 0.7;
-      line-height: 1.8;
+    .why div {
+      background: var(--teal-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--r-button);
+      padding: 14px;
+      font-size: 0.8125rem;
+      color: var(--teal-dark);
+      font-weight: 600;
       text-align: center;
     }
+    @media (max-width: 520px) { .why { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-  <header>
+  <header class="site-header">
     <div class="container">
-      <a href="../"><img class="header-logo" src="../assets/wordmark_purple.png" alt="Tooq"></a>
-      <a class="header-cta" href="../#get-the-app">Get the app</a>
+      <a class="logo" href="../" aria-label="TOOQ home"><img src="../assets/logo.svg" alt="TOOQ"></a>
+      <nav>
+        <a href="../#features">Features</a>
+        <a href="../#found">Found a pet?</a>
+        <a class="btn btn-primary btn-small" href="../#get-the-app">Get the app</a>
+      </nav>
     </div>
   </header>
 
   <main>
     <section class="intro">
       <div class="container">
-        <img class="intro-mark" src="../assets/mark_purple.png" alt="Tooq dog and cat mark">
-        <h1>Join Tooq as a <span>merchant or clinic</span></h1>
-        <p>
-          Pet shops, groomers and veterinary clinics: leave your details and the Tooq team
+        <img class="intro-avatar" src="../assets/pet_avatar.svg" alt="">
+        <h1>Join TOOQ as a <span>merchant or clinic</span></h1>
+        <p class="lead">
+          Pet shops, groomers and veterinary clinics: leave your details and the TOOQ team
           will get in touch about bringing your business onto the platform.
         </p>
       </div>
@@ -257,22 +200,24 @@
       <div class="container">
         <div class="form-card" id="card">
           <form id="register-form" novalidate>
+            <h2>Register your interest</h2>
+            <p class="supporting">Takes less than a minute. We'll call or message you back.</p>
 
             <div class="field" data-field="businessName">
               <label for="businessName">Business name</label>
-              <input type="text" id="businessName" name="businessName" maxlength="120" autocomplete="organization" required>
+              <input type="text" id="businessName" name="businessName" maxlength="120" autocomplete="organization" placeholder="e.g. Salmiya Pet Clinic" required>
               <div class="field-error"></div>
             </div>
 
             <div class="field" data-field="contactName">
               <label for="contactName">Contact person</label>
-              <input type="text" id="contactName" name="contactName" maxlength="120" autocomplete="name" required>
+              <input type="text" id="contactName" name="contactName" maxlength="120" autocomplete="name" placeholder="Who should we ask for?" required>
               <div class="field-error"></div>
             </div>
 
             <div class="field" data-field="phone">
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" maxlength="24" autocomplete="tel" placeholder="+965 6667 6522" required>
+              <input type="tel" id="phone" name="phone" maxlength="24" autocomplete="tel" inputmode="tel" placeholder="+965 6667 6522" required>
               <div class="field-error"></div>
             </div>
 
@@ -282,41 +227,49 @@
             </div>
 
             <p class="consent">
-              By sending this form you agree that Tanami Company may contact you about Tooq.
+              By sending this form you agree that Tanami Company may contact you about TOOQ.
               We never share your details with anyone else.
             </p>
 
-            <button class="btn-primary" type="submit" id="submit">Register my interest</button>
+            <button class="btn btn-primary btn-submit" type="submit" id="submit">Register my interest</button>
             <div class="form-status" id="status" role="alert"></div>
           </form>
 
           <div class="success">
-            <div class="emoji">🐾</div>
+            <div class="mark">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 22C21.4 22 24 17.6 24 13.6C24 9.6 21.4 6 17.6 6C13.8 6 11 10 11 14.2C11 18.4 12.8 22 17 22ZM31 22C35.2 22 37 18.4 37 14.2C37 10 34.4 6 30.4 6C26.4 6 24 10 24 13.6C24 17.2 26.6 22 31 22ZM10 26C5.6 26 2 29.4 2 33.6C2 37.8 5.4 40 9.6 40C12.6 40 14.6 38.4 16 36C17.8 32.6 14.4 26 10 26ZM38 26C33.6 26 30.2 32.6 32 36C33.4 38.4 35.4 40 38.4 40C42.6 40 46 37.8 46 33.6C46 29.4 42.4 26 38 26ZM24 26C18 26 12 32.6 12 38C12 42.4 16.6 44 24 44C31.4 44 36 42.4 36 38C36 32.6 30 26 24 26Z" fill="#0E7C72"/></svg>
+            </div>
             <h2>Thank you!</h2>
-            <p>We've received your details. Someone from the Tooq team will reach out soon.</p>
-            <a href="../">Back to tooq.ai</a>
+            <p>We've received your details. Someone from the TOOQ team will reach out soon.</p>
+            <a class="btn btn-ghost" href="../">Back to tooq.ai</a>
           </div>
+        </div>
+
+        <div class="why" aria-hidden="true">
+          <div>Reach TOOQ pet owners near you</div>
+          <div>Bookings &amp; orders in the app</div>
+          <div>No setup fee to get started</div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="container">
-      <div class="footer-top">
-        <img class="footer-logo" src="../assets/wordmark_white.png" alt="Tooq">
-        <p>A smart tag, a profile, and a way home. Tooq keeps you and your pet connected — wherever their paws take them.</p>
+      <div class="top">
+        <img class="logo" src="../assets/logo.svg" alt="TOOQ">
+        <p>Your pet, connected. TOOQ keeps you and your pet together — identity, care and safety in one app.</p>
       </div>
-      <div class="footer-legal">
+      <div class="legal">
         © 2026 Tanami Company. All rights reserved.<br>
-        Tooq is developed and owned by Tanami Company — Mangaf, Al-Ahmadi Governorate, Kuwait.<br>
-        Contact: <a href="tel:+96566676522" style="color: inherit;">+965 6667 6522</a>
+        TOOQ is developed and owned by Tanami Company — Mangaf, Al-Ahmadi Governorate, Kuwait.<br>
+        Contact: <a href="tel:+96566676522">+965 6667 6522</a>
       </div>
     </div>
   </footer>
 
   <script>
-    // The Tooq API (the ApiCloudFrontUrl output of the deployed stack). Endpoint docs:
+    // The TOOQ API (the ApiCloudFrontUrl output of the deployed stack). Endpoint docs:
     // tooq-backend/docs/api.md, "Merchant registration".
     const API_BASE = "https://d18iikljzzylqe.cloudfront.net";
 

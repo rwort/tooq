@@ -1,0 +1,190 @@
+/*
+ * TOOQ website — shared styles.
+ * Tokens mirror the app's lib/core/theme (Figma "TOOQ official visual system").
+ * Do not invent colours: everything below is one of the Figma paint styles.
+ */
+:root {
+  /* Brand */
+  --teal: #16B8A6;
+  --teal-dark: #0E7C72;
+  --coral: #FF7A59;
+  --coral-light: #FF9B80;
+  /* Surfaces */
+  --cream: #FFF6EE;
+  --white: #FFFFFF;
+  --teal-soft: #E9F8F6;
+  --mint: #C7F0E8;
+  --coral-soft: #FFF0EC;
+  /* Text */
+  --text: #182230;
+  --text-secondary: #667085;
+  /* Border */
+  --border: #DCEFEB;
+  /* Semantic */
+  --success: #12B76A;
+  --danger: #D92D20;
+  --danger-soft: #FEF3F2;
+  /* Shape (AppRadius) */
+  --r-button: 16px;
+  --r-card: 20px;
+  --r-input: 12px;
+  --r-pill: 999px;
+  /* Elevation (AppShadows.card / soft) */
+  --shadow-card: 0 4px 6px -4px rgba(0, 0, 0, 0.10), 0 10px 15px -3px rgba(0, 0, 0, 0.10);
+  --shadow-soft: 0 4px 14px rgba(0, 0, 0, 0.08);
+  /* Gradients */
+  --g-splash: linear-gradient(115deg, var(--cream) 14%, var(--teal-soft) 56%, var(--mint) 86%);
+  --g-ai: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 38%, var(--coral-light) 72%, var(--coral) 100%);
+  --g-teal-button: linear-gradient(90deg, var(--teal-dark), var(--teal));
+  --g-care: linear-gradient(90deg, var(--teal-soft), var(--coral-soft));
+  --g-safety: linear-gradient(90deg, var(--coral-soft) 0%, var(--white) 52%, var(--teal-soft) 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--cream);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+img, svg { max-width: 100%; display: block; }
+a { color: var(--teal-dark); }
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- type ---------- */
+h1, h2, h3 { font-weight: 700; line-height: 1.25; letter-spacing: 0; }
+h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.125rem; font-weight: 600; }
+.lead { font-size: 1.125rem; color: var(--text-secondary); }
+.supporting { font-size: 0.875rem; color: var(--text-secondary); }
+.note { font-size: 0.8125rem; color: var(--teal-dark); font-weight: 600; }
+
+/* ---------- buttons (Button / TOOQ, 52px, radius 16) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: var(--r-button);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: transform 0.12s ease, background 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+
+.btn-primary { background: var(--coral); color: var(--white); }
+.btn-primary:hover { background: #F56B48; box-shadow: var(--shadow-soft); }
+
+.btn-ghost { background: transparent; color: var(--coral); border-color: var(--coral); }
+.btn-ghost:hover { background: var(--coral-soft); }
+
+.btn-teal { background: var(--g-teal-button); color: var(--white); }
+
+.btn-small { min-height: 44px; padding: 0 20px; font-size: 0.875rem; }
+
+.btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ---------- header ---------- */
+.site-header { padding: 18px 0; }
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.site-header .logo { height: 40px; width: auto; }
+.site-header .logo img { height: 100%; width: auto; }
+.site-header nav { display: flex; align-items: center; gap: 8px 22px; }
+.site-header nav a:not(.btn) {
+  color: var(--teal-dark);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+.site-header nav a:not(.btn):hover { color: var(--teal); }
+@media (max-width: 640px) {
+  .site-header nav a:not(.btn) { display: none; }
+}
+
+/* ---------- chips (32px, radius 16) ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: var(--r-button);
+  background: var(--white);
+  color: var(--text);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+}
+.chip.coral { background: var(--coral-soft); color: var(--coral); }
+.chip.teal { background: var(--teal-soft); color: var(--teal-dark); }
+
+/* ---------- cards ---------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 40px 0 28px;
+  margin-top: 40px;
+}
+.site-footer .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.site-footer .logo { height: 34px; width: auto; }
+.site-footer .top p { color: var(--text-secondary); font-size: 0.9375rem; max-width: 460px; }
+.site-footer .legal {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.site-footer .legal a { color: var(--teal-dark); font-weight: 600; text-decoration: none; }
+.site-footer .legal a:hover { text-decoration: underline; }
