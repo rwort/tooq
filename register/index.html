@@ -86,6 +86,20 @@
       border-color: var(--teal);
       box-shadow: 0 0 0 4px var(--teal-soft);
     }
+    .field label .optional { font-weight: 400; color: var(--text-secondary); }
+    .field .hint {
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      margin-top: 6px;
+    }
+    /* Safari and iOS shrink a date input to its text; keep it the height of the others. */
+    .field input[type="date"] {
+      -webkit-appearance: none;
+      appearance: none;
+      display: block;
+      min-height: 52px;
+      line-height: 50px;
+    }
     .field.invalid input { border-color: var(--danger); box-shadow: none; }
     .field-error {
       display: none;
@@ -221,6 +235,13 @@
               <div class="field-error"></div>
             </div>
 
+            <div class="field" data-field="exhibitionDate">
+              <label for="exhibitionDate">Present at the exhibition on <span class="optional">(optional)</span></label>
+              <input type="date" id="exhibitionDate" name="exhibitionDate" autocomplete="off">
+              <div class="hint">Exhibiting? Tell us the day we can find you at your stand.</div>
+              <div class="field-error"></div>
+            </div>
+
             <div class="extra-field" aria-hidden="true">
               <label for="website">Website</label>
               <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -285,7 +306,11 @@
       businessName: "Please enter your business name (at least 2 characters).",
       contactName: "Please tell us who we should ask for.",
       phone: "Please enter a valid phone number, e.g. +965 6667 6522.",
+      exhibitionDate: "Please pick a valid date, or leave it empty.",
     };
+
+    // Past days make no sense for "I'll be at the exhibition on"; the picker starts today.
+    form.exhibitionDate.min = new Date().toISOString().slice(0, 10);
 
     function clearErrors() {
       form.querySelectorAll(".field.invalid").forEach((el) => el.classList.remove("invalid"));
@@ -314,6 +339,8 @@
         businessName: form.businessName.value.trim(),
         contactName: form.contactName.value.trim(),
         phone: form.phone.value.trim(),
+        // YYYY-MM-DD from the picker; the API takes null for "not attending".
+        exhibitionDate: form.exhibitionDate.value || null,
         website: form.website.value,
         elapsedMs: Date.now() - openedAt,
       };
@@ -323,6 +350,7 @@
       if (body.businessName.length < 2) ok = showFieldError("businessName", messages.businessName) && false;
       if (body.contactName.length < 1) ok = showFieldError("contactName", messages.contactName) && false;
       if (body.phone.replace(/\D/g, "").length < 7) ok = showFieldError("phone", messages.phone) && false;
+      if (body.exhibitionDate !== null && !/^\d{4}-\d{2}-\d{2}$/.test(body.exhibitionDate)) ok = showFieldError("exhibitionDate", messages.exhibitionDate) && false;
       if (!ok) {
         form.querySelector(".field.invalid input")?.focus();
         return;
