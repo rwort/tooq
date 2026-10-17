@@ -1,596 +1,957 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TOOQ — Everything your pet needs, in one place</title>
-  <meta name="description" content="TOOQ gives your pet a digital ID, health records, reminders, an AI care assistant and a way home if they ever go missing. Developed and owned by Tanami Company, Kuwait.">
-  <meta name="theme-color" content="#FFF6EE">
-  <meta name="apple-itunes-app" content="app-id=6792516587">
-  <meta property="og:title" content="TOOQ — Your pet, connected.">
-  <meta property="og:description" content="Digital ID, health, reminders, TOOQ AI and lost-pet safety — everything your pet needs, in one app.">
-  <meta property="og:image" content="https://tooq.ai/assets/app_icon.png">
-  <link rel="icon" type="image/png" href="assets/app_icon.png">
-  <link rel="apple-touch-icon" href="assets/app_icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css">
-  <style>
-    /* ---------- hero (Splash + Welcome, 620:1850 / 620:2035) ---------- */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background: var(--g-splash);
-      padding: 56px 0 72px;
-    }
-    /* Decoration / Coral Glow (620:1857) */
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -220px;
-      right: -120px;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 122, 89, 0.22) 0%, rgba(255, 122, 89, 0) 70%);
-      pointer-events: none;
-    }
-    .hero .container {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 40px;
-    }
-    .hero-copy .logo { height: 68px; width: auto; margin-bottom: 28px; }
-    .hero-copy h1 { margin-bottom: 14px; }
-    .hero-copy h1 span { color: var(--teal-dark); }
-    .hero-copy .lead { max-width: 520px; margin-bottom: 24px; }
-    .hero-cues { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
-    .store-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
-    .store-buttons .btn { min-width: 220px; }
-    .store-note { margin-top: 14px; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOOQ — Everything your pet needs, in one place</title>
+    <meta name="description" content="TOOQ gives your pet a digital ID, health records, reminders, an AI care assistant and a way home if they ever go missing. Developed and owned by Tanami Company, Kuwait." />
+    <meta name="theme-color" content="#FFF6EE" />
+    <meta name="apple-itunes-app" content="app-id=6792516587" />
+    <meta property="og:title" content="TOOQ — Your pet, connected." />
+    <meta property="og:description" content="Digital ID, health, reminders, TOOQ AI and lost-pet safety — everything your pet needs, in one app." />
+    <meta property="og:image" content="https://tooq.ai/assets/app_icon.png" />
+    <link rel="icon" type="image/png" href="assets/app_icon.png" />
+    <link rel="apple-touch-icon" href="assets/app_icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <style>
+      /* ---------- hero (Splash + Welcome, 620:1850 / 620:2035) ---------- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: var(--g-splash);
+        padding: 56px 0 72px;
+      }
+      /* Decoration / Coral Glow (620:1857) */
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -220px;
+        right: -120px;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 122, 89, 0.22) 0%, rgba(255, 122, 89, 0) 70%);
+        pointer-events: none;
+      }
+      .hero .container {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 40px;
+      }
+      .hero-copy .logo {
+        height: 68px;
+        width: auto;
+        margin-bottom: 28px;
+      }
+      .hero-copy h1 {
+        margin-bottom: 14px;
+      }
+      .hero-copy h1 span {
+        color: var(--teal-dark);
+      }
+      .hero-copy .lead {
+        max-width: 520px;
+        margin-bottom: 24px;
+      }
+      .hero-cues {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 32px;
+      }
+      .store-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .store-buttons .btn {
+        min-width: 220px;
+      }
+      .store-note {
+        margin-top: 14px;
+      }
 
-    .hero-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .avatar-frame {
-      position: relative;
-      width: min(100%, 360px);
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* Safety Halo (620:1989) */
-    .avatar-frame::before {
-      content: "";
-      position: absolute;
-      inset: 4%;
-      border-radius: 50%;
-      border: 30px solid rgba(22, 184, 166, 0.18);
-    }
-    .avatar-frame img { position: relative; width: 74%; height: auto; }
+      .hero-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .avatar-frame {
+        position: relative;
+        width: min(100%, 360px);
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* Safety Halo (620:1989) */
+      .avatar-frame::before {
+        content: "";
+        position: absolute;
+        inset: 4%;
+        border-radius: 50%;
+        border: 30px solid rgba(22, 184, 166, 0.18);
+      }
+      .avatar-frame img {
+        position: relative;
+        width: 74%;
+        height: auto;
+      }
 
-    @media (max-width: 860px) {
-      .hero { padding: 36px 0 56px; text-align: center; }
-      .hero .container { grid-template-columns: 1fr; gap: 12px; }
-      .hero-visual { order: -1; }
-      .avatar-frame { width: min(70vw, 280px); }
-      .hero-copy .logo { margin: 0 auto 20px; }
-      .hero-copy .lead { margin-left: auto; margin-right: auto; }
-      .hero-cues, .store-buttons { justify-content: center; }
-      .store-buttons .btn { flex: 1 1 220px; }
-    }
+      @media (max-width: 860px) {
+        .hero {
+          padding: 36px 0 56px;
+          text-align: center;
+        }
+        .hero .container {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .hero-visual {
+          order: -1;
+        }
+        .avatar-frame {
+          width: min(70vw, 280px);
+        }
+        .hero-copy .logo {
+          margin: 0 auto 20px;
+        }
+        .hero-copy .lead {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .hero-cues,
+        .store-buttons {
+          justify-content: center;
+        }
+        .store-buttons .btn {
+          flex: 1 1 220px;
+        }
+      }
 
-    /* ---------- intro slides as feature story (620:1851 / 1852 / 1853) ---------- */
-    .story { padding: 72px 0 24px; }
-    .story .heading { text-align: center; max-width: 620px; margin: 0 auto 40px; }
-    .story .heading p { margin-top: 10px; }
-    .slides {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .slide {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--r-card);
-      box-shadow: var(--shadow-card);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .slide-visual {
-      height: 230px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .slide-body { padding: 22px 22px 26px; }
-    .slide-body h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
-    .slide-body p { color: var(--text-secondary); font-size: 0.9375rem; }
-    .slide-body .note { display: block; margin-top: 10px; }
-    .slide-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: var(--teal-soft);
-      color: var(--teal-dark);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
+      /* ---------- intro slides as feature story (620:1851 / 1852 / 1853) ---------- */
+      .story {
+        padding: 72px 0 24px;
+      }
+      .story .heading {
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto 40px;
+      }
+      .story .heading p {
+        margin-top: 10px;
+      }
+      .slides {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .slide {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--r-card);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .slide-visual {
+        height: 230px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .slide-body {
+        padding: 22px 22px 26px;
+      }
+      .slide-body h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .slide-body p {
+        color: var(--text-secondary);
+        font-size: 0.9375rem;
+      }
+      .slide-body .note {
+        display: block;
+        margin-top: 10px;
+      }
+      .slide-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--teal-soft);
+        color: var(--teal-dark);
+        font-size: 0.8125rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
 
-    /* slide 1 — Complete Pet Care (620:1893) */
-    .visual-care { background: var(--g-care); flex-direction: column; gap: 18px; }
-    .visual-care img { width: 130px; height: 130px; }
-    .visual-care .cues { display: flex; gap: 8px; }
-    .visual-care .chip { height: 32px; padding: 0 14px; font-size: 0.75rem; }
+      /* slide 1 — Complete Pet Care (620:1893) */
+      .visual-care {
+        background: var(--g-care);
+        flex-direction: column;
+        gap: 18px;
+      }
+      .visual-care img {
+        width: 130px;
+        height: 130px;
+      }
+      .visual-care .cues {
+        display: flex;
+        gap: 8px;
+      }
+      .visual-care .chip {
+        height: 32px;
+        padding: 0 14px;
+        font-size: 0.75rem;
+      }
 
-    /* slide 2 — TOOQ AI (620:1931) */
-    .visual-ai { background: var(--g-ai); flex-direction: column; gap: 14px; padding: 18px; }
-    .spark-orb {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .spark-orb svg { width: 26px; height: 26px; }
-    .ai-card {
-      width: 100%;
-      max-width: 280px;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: var(--r-button);
-      padding: 12px;
-      color: var(--white);
-      backdrop-filter: blur(6px);
-    }
-    .ai-card .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .ai-card .head .ic {
-      width: 30px; height: 30px; border-radius: 9px;
-      background: rgba(255, 255, 255, 0.25);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .ai-card .head .ic svg { width: 18px; height: 18px; }
-    .ai-card .head strong { display: block; font-size: 0.875rem; font-weight: 600; line-height: 1.2; }
-    .ai-card .head small { font-size: 0.6875rem; opacity: 0.9; }
-    .ai-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-    .ai-tile {
-      background: var(--white);
-      color: var(--text);
-      border-radius: 10px;
-      padding: 8px;
-      font-size: 0.625rem;
-      line-height: 1.25;
-    }
-    .ai-tile .ic {
-      width: 22px; height: 22px; border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 6px;
-    }
-    .ai-tile .ic svg { width: 13px; height: 13px; }
-    .ai-tile .ic.coral { background: var(--coral); }
-    .ai-tile .ic.teal { background: var(--teal); }
-    .ai-tile .ic.dark { background: var(--teal-dark); }
-    .ai-tile strong { display: block; font-weight: 700; }
-    .ai-tile span { color: var(--text-secondary); }
+      /* slide 2 — TOOQ AI (620:1931) */
+      .visual-ai {
+        background: var(--g-ai);
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px;
+      }
+      .spark-orb {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .spark-orb svg {
+        width: 26px;
+        height: 26px;
+      }
+      .ai-card {
+        width: 100%;
+        max-width: 280px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: var(--r-button);
+        padding: 12px;
+        color: var(--white);
+        backdrop-filter: blur(6px);
+      }
+      .ai-card .head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .ai-card .head .ic {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        background: rgba(255, 255, 255, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ai-card .head .ic svg {
+        width: 18px;
+        height: 18px;
+      }
+      .ai-card .head strong {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+      .ai-card .head small {
+        font-size: 0.6875rem;
+        opacity: 0.9;
+      }
+      .ai-tiles {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .ai-tile {
+        background: var(--white);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 8px;
+        font-size: 0.625rem;
+        line-height: 1.25;
+      }
+      .ai-tile .ic {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 6px;
+      }
+      .ai-tile .ic svg {
+        width: 13px;
+        height: 13px;
+      }
+      .ai-tile .ic.coral {
+        background: var(--coral);
+      }
+      .ai-tile .ic.teal {
+        background: var(--teal);
+      }
+      .ai-tile .ic.dark {
+        background: var(--teal-dark);
+      }
+      .ai-tile strong {
+        display: block;
+        font-weight: 700;
+      }
+      .ai-tile span {
+        color: var(--text-secondary);
+      }
 
-    /* slide 3 — Identity & Safety (620:1988) */
-    .visual-safety { background: var(--g-safety); flex-direction: column; gap: 14px; padding: 18px; }
-    .visual-safety::before {
-      content: "";
-      position: absolute;
-      top: -110px; left: 50%;
-      width: 240px; height: 240px;
-      margin-left: -120px;
-      border-radius: 50%;
-      border: 30px solid rgba(22, 184, 166, 0.18);
-    }
-    .pet-card {
-      position: relative;
-      width: 100%;
-      max-width: 270px;
-      background: var(--white);
-      border: 1.5px solid var(--coral);
-      border-radius: var(--r-button);
-      padding: 12px;
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 10px;
-      align-items: center;
-    }
-    .pet-card .avatar {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--coral-soft);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .pet-card .avatar img { width: 44px; height: 44px; }
-    .pet-card .name { font-weight: 700; font-size: 0.875rem; line-height: 1.2; }
-    .pet-card .meta { font-size: 0.6875rem; color: var(--text-secondary); }
-    .pet-card .tags { display: flex; gap: 6px; margin-top: 6px; }
-    .pet-card .tag {
-      display: inline-flex; align-items: center; gap: 4px;
-      height: 20px; padding: 0 8px; border-radius: 6px;
-      font-size: 0.625rem; font-weight: 700;
-    }
-    .pet-card .tag.lost { background: var(--danger); color: var(--white); }
-    .pet-card .tag.active { background: var(--teal-soft); color: var(--teal-dark); }
-    .pet-card .tag svg { width: 10px; height: 10px; }
-    .pet-card .seen { grid-column: 1 / -1; font-size: 0.6875rem; color: var(--danger); font-weight: 600; }
-    .visual-safety .cues { position: relative; display: flex; gap: 10px; }
-    .visual-safety .chip { height: 32px; padding: 0 14px; font-size: 0.75rem; }
-    .visual-safety .chip svg { width: 14px; height: 14px; }
+      /* slide 3 — Identity & Safety (620:1988) */
+      .visual-safety {
+        background: var(--g-safety);
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px;
+      }
+      .visual-safety::before {
+        content: "";
+        position: absolute;
+        top: -110px;
+        left: 50%;
+        width: 240px;
+        height: 240px;
+        margin-left: -120px;
+        border-radius: 50%;
+        border: 30px solid rgba(22, 184, 166, 0.18);
+      }
+      .pet-card {
+        position: relative;
+        width: 100%;
+        max-width: 270px;
+        background: var(--white);
+        border: 1.5px solid var(--coral);
+        border-radius: var(--r-button);
+        padding: 12px;
+        box-shadow: var(--shadow-soft);
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 10px;
+        align-items: center;
+      }
+      .pet-card .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--coral-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pet-card .avatar img {
+        width: 44px;
+        height: 44px;
+      }
+      .pet-card .name {
+        font-weight: 700;
+        font-size: 0.875rem;
+        line-height: 1.2;
+      }
+      .pet-card .meta {
+        font-size: 0.6875rem;
+        color: var(--text-secondary);
+      }
+      .pet-card .tags {
+        display: flex;
+        gap: 6px;
+        margin-top: 6px;
+      }
+      .pet-card .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        height: 20px;
+        padding: 0 8px;
+        border-radius: 6px;
+        font-size: 0.625rem;
+        font-weight: 700;
+      }
+      .pet-card .tag.lost {
+        background: var(--danger);
+        color: var(--white);
+      }
+      .pet-card .tag.active {
+        background: var(--teal-soft);
+        color: var(--teal-dark);
+      }
+      .pet-card .tag svg {
+        width: 10px;
+        height: 10px;
+      }
+      .pet-card .seen {
+        grid-column: 1 / -1;
+        font-size: 0.6875rem;
+        color: var(--danger);
+        font-weight: 600;
+      }
+      .visual-safety .cues {
+        position: relative;
+        display: flex;
+        gap: 10px;
+      }
+      .visual-safety .chip {
+        height: 32px;
+        padding: 0 14px;
+        font-size: 0.75rem;
+      }
+      .visual-safety .chip svg {
+        width: 14px;
+        height: 14px;
+      }
 
-    @media (max-width: 900px) {
-      .slides { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-    }
+      @media (max-width: 900px) {
+        .slides {
+          grid-template-columns: 1fr;
+          max-width: 420px;
+          margin: 0 auto;
+        }
+      }
 
-    /* ---------- feature grid ---------- */
-    .features { padding: 56px 0 24px; }
-    .features .heading { text-align: center; max-width: 620px; margin: 0 auto 36px; }
-    .features .heading p { margin-top: 10px; }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .feature {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--r-card);
-      padding: 22px;
-    }
-    .feature .ic {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: var(--teal-soft);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px;
-    }
-    .feature .ic.coral { background: var(--coral-soft); }
-    .feature .ic svg { width: 22px; height: 22px; }
-    .feature h3 { margin-bottom: 6px; }
-    .feature p { font-size: 0.9375rem; color: var(--text-secondary); }
+      /* ---------- feature grid ---------- */
+      .features {
+        padding: 56px 0 24px;
+      }
+      .features .heading {
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto 36px;
+      }
+      .features .heading p {
+        margin-top: 10px;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .feature {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--r-card);
+        padding: 22px;
+      }
+      .feature .ic {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: var(--teal-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+      }
+      .feature .ic.coral {
+        background: var(--coral-soft);
+      }
+      .feature .ic svg {
+        width: 22px;
+        height: 22px;
+      }
+      .feature h3 {
+        margin-bottom: 6px;
+      }
+      .feature p {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
 
-    /* ---------- found a pet ---------- */
-    .found { padding: 40px 0 8px; }
-    .found-card {
-      background: var(--coral-soft);
-      border: 1px solid #FFD8CC;
-      border-radius: var(--r-card);
-      padding: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .found-card h2 { font-size: 1.5rem; margin-bottom: 6px; }
-    .found-card p { color: var(--text-secondary); max-width: 560px; }
-    .found-card .steps { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-    .found-card .chip { height: 32px; font-size: 0.75rem; }
+      /* ---------- found a pet ---------- */
+      .found {
+        padding: 40px 0 8px;
+      }
+      .found-card {
+        background: var(--coral-soft);
+        border: 1px solid #ffd8cc;
+        border-radius: var(--r-card);
+        padding: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .found-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+      .found-card p {
+        color: var(--text-secondary);
+        max-width: 560px;
+      }
+      .found-card .steps {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      .found-card .chip {
+        height: 32px;
+        font-size: 0.75rem;
+      }
 
-    /* ---------- download band ---------- */
-    .download { padding: 48px 0 0; }
-    .download-card {
-      background: var(--g-teal-button);
-      color: var(--white);
-      border-radius: var(--r-card);
-      padding: 44px 32px;
-      text-align: center;
-    }
-    .download-card h2 { margin-bottom: 8px; }
-    .download-card p { opacity: 0.9; max-width: 520px; margin: 0 auto 24px; }
-    .download-card .store-buttons { justify-content: center; }
-    .download-card .btn-ghost { color: var(--white); border-color: rgba(255, 255, 255, 0.7); }
-    .download-card .btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
-    .download-card .store-note { color: var(--white); opacity: 0.85; }
+      /* ---------- download band ---------- */
+      .download {
+        padding: 48px 0 0;
+      }
+      .download-card {
+        background: var(--g-teal-button);
+        color: var(--white);
+        border-radius: var(--r-card);
+        padding: 44px 32px;
+        text-align: center;
+      }
+      .download-card h2 {
+        margin-bottom: 8px;
+      }
+      .download-card p {
+        opacity: 0.9;
+        max-width: 520px;
+        margin: 0 auto 24px;
+      }
+      .download-card .store-buttons {
+        justify-content: center;
+      }
+      .download-card .btn-ghost {
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 0.7);
+      }
+      .download-card .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .download-card .store-note {
+        color: var(--white);
+        opacity: 0.85;
+      }
 
-    /* ---------- about ---------- */
-    .about { padding: 48px 0 8px; }
-    .about-card {
-      background: var(--teal-soft);
-      border: 1px solid var(--border);
-      border-radius: var(--r-card);
-      padding: 36px 32px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
-      align-items: center;
-    }
-    .about-card h2 { margin-bottom: 8px; }
-    .about-card > div > p { color: var(--text-secondary); }
-    .about-address {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--r-button);
-      padding: 18px 20px;
-      font-size: 0.9375rem;
-    }
-    .about-address strong { display: block; margin-bottom: 4px; }
-    .about-address p { color: var(--text-secondary); }
-    .about-address a { font-weight: 600; text-decoration: none; }
-    @media (max-width: 760px) {
-      .about-card { grid-template-columns: 1fr; }
-      .found-card, .download-card { padding: 28px 22px; }
-    }
-  </style>
-</head>
-<body>
+      /* ---------- about ---------- */
+      .about {
+        padding: 48px 0 8px;
+      }
+      .about-card {
+        background: var(--teal-soft);
+        border: 1px solid var(--border);
+        border-radius: var(--r-card);
+        padding: 36px 32px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: center;
+      }
+      .about-card h2 {
+        margin-bottom: 8px;
+      }
+      .about-card > div > p {
+        color: var(--text-secondary);
+      }
+      .about-address {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--r-button);
+        padding: 18px 20px;
+        font-size: 0.9375rem;
+      }
+      .about-address strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .about-address p {
+        color: var(--text-secondary);
+      }
+      .about-address a {
+        font-weight: 600;
+        text-decoration: none;
+      }
+      @media (max-width: 760px) {
+        .about-card {
+          grid-template-columns: 1fr;
+        }
+        .found-card,
+        .download-card {
+          padding: 28px 22px;
+        }
+      }
+    </style>
 
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="./" aria-label="TOOQ home"><img src="assets/logo.svg" alt="TOOQ"></a>
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#found">Found a pet?</a>
-        <a href="register/">For merchants &amp; clinics</a>
-        <a class="btn btn-primary btn-small" href="#get-the-app">Get the app</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-
-    <section class="hero">
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "3276633185865769");
+      fbq("track", "PageView");
+    </script>
+    <noscript><img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=3276633185865769&ev=PageView&noscript=1" /></noscript>
+  </head>
+  <body>
+    <header class="site-header">
       <div class="container">
-        <div class="hero-copy">
-          <img class="logo" src="assets/logo.svg" alt="TOOQ">
-          <h1>Everything your pet needs, <span>in one place.</span></h1>
-          <p class="lead">
-            Keep your pet's identity, health, reminders and daily care organized with TOOQ —
-            and stay connected when it matters most.
-          </p>
-          <div class="hero-cues" aria-hidden="true">
-            <span class="chip">Digital ID</span>
-            <span class="chip coral">Health</span>
-            <span class="chip">Reminders</span>
-            <span class="chip teal">TOOQ AI</span>
-          </div>
-          <div class="store-buttons" id="get-the-app">
-            <a class="btn btn-primary" href="https://apps.apple.com/app/id6792516587" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 12.79c-.024-2.58 2.107-3.82 2.203-3.88-1.2-1.755-3.067-1.995-3.732-2.022-1.59-.16-3.1.937-3.907.937-.805 0-2.05-.914-3.37-.89-1.733.026-3.333 1.008-4.226 2.56-1.803 3.126-.46 7.754 1.295 10.29.858 1.24 1.88 2.634 3.222 2.584 1.293-.052 1.782-.837 3.346-.837 1.563 0 2.003.837 3.372.81 1.392-.026 2.274-1.263 3.126-2.508.985-1.44 1.392-2.834 1.416-2.906-.03-.013-2.718-1.043-2.745-4.138zM13.79 5.22c.713-.864 1.194-2.066 1.063-3.263-1.027.042-2.27.684-3.007 1.547-.66.764-1.238 1.987-1.083 3.16 1.146.089 2.315-.582 3.027-1.444z"/></svg>
-              Download on the App Store
-            </a>
-            <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.tooqapp.com" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3 13.2 12 3.6 21.7c-.3-.2-.5-.6-.5-1V3.3c0-.4.2-.8.5-1zm1.3-.6c.2-.1.5-.1.8 0l11.1 6.4-2.5 2.5L5 1.7zm12.9 7.1 2.8 1.6c.9.5.9 1.7 0 2.2l-2.8 1.6L15 11.9l2.8-3.1zM4.9 22.3l9.5-9.3 2.4 2.5-11.1 6.4c-.3.2-.6.2-.8.4z"/></svg>
-              Get it on Google Play
-            </a>
-          </div>
-          <p class="store-note supporting">Free to download. Available on iPhone and Android.</p>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="avatar-frame">
-            <img src="assets/pet_avatar.svg" alt="">
-          </div>
-        </div>
+        <a class="logo" href="./" aria-label="TOOQ home"><img src="assets/logo.svg" alt="TOOQ" /></a>
+        <nav>
+          <a href="#features">Features</a>
+          <a href="#found">Found a pet?</a>
+          <a href="register/">For merchants &amp; clinics</a>
+          <a class="btn btn-primary btn-small" href="#get-the-app">Get the app</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <section class="story" id="features">
-      <div class="container">
-        <div class="heading">
-          <h2>Your pet, connected.</h2>
-          <p class="lead">Identity, care and safety — the three things TOOQ takes care of for you.</p>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-copy">
+            <img class="logo" src="assets/logo.svg" alt="TOOQ" />
+            <h1>Everything your pet needs, <span>in one place.</span></h1>
+            <p class="lead">Keep your pet's identity, health, reminders and daily care organized with TOOQ — and stay connected when it matters most.</p>
+            <div class="hero-cues" aria-hidden="true">
+              <span class="chip">Digital ID</span>
+              <span class="chip coral">Health</span>
+              <span class="chip">Reminders</span>
+              <span class="chip teal">TOOQ AI</span>
+            </div>
+            <div class="store-buttons" id="get-the-app">
+              <a class="btn btn-primary" href="https://apps.apple.com/app/id6792516587" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M16.365 12.79c-.024-2.58 2.107-3.82 2.203-3.88-1.2-1.755-3.067-1.995-3.732-2.022-1.59-.16-3.1.937-3.907.937-.805 0-2.05-.914-3.37-.89-1.733.026-3.333 1.008-4.226 2.56-1.803 3.126-.46 7.754 1.295 10.29.858 1.24 1.88 2.634 3.222 2.584 1.293-.052 1.782-.837 3.346-.837 1.563 0 2.003.837 3.372.81 1.392-.026 2.274-1.263 3.126-2.508.985-1.44 1.392-2.834 1.416-2.906-.03-.013-2.718-1.043-2.745-4.138zM13.79 5.22c.713-.864 1.194-2.066 1.063-3.263-1.027.042-2.27.684-3.007 1.547-.66.764-1.238 1.987-1.083 3.16 1.146.089 2.315-.582 3.027-1.444z"
+                  />
+                </svg>
+                Download on the App Store
+              </a>
+              <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.tooqapp.com" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M3.6 2.3 13.2 12 3.6 21.7c-.3-.2-.5-.6-.5-1V3.3c0-.4.2-.8.5-1zm1.3-.6c.2-.1.5-.1.8 0l11.1 6.4-2.5 2.5L5 1.7zm12.9 7.1 2.8 1.6c.9.5.9 1.7 0 2.2l-2.8 1.6L15 11.9l2.8-3.1zM4.9 22.3l9.5-9.3 2.4 2.5-11.1 6.4c-.3.2-.6.2-.8.4z"
+                  />
+                </svg>
+                Get it on Google Play
+              </a>
+            </div>
+            <p class="store-note supporting">Free to download. Available on iPhone and Android.</p>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="avatar-frame">
+              <img src="assets/pet_avatar.svg" alt="" />
+            </div>
+          </div>
         </div>
-        <div class="slides">
+      </section>
 
-          <article class="slide">
-            <div class="slide-visual visual-care" aria-hidden="true">
-              <img src="assets/pet_avatar.svg" alt="">
-              <div class="cues">
-                <span class="chip">Digital ID</span>
-                <span class="chip coral">Health</span>
-                <span class="chip">Reminders</span>
-              </div>
-            </div>
-            <div class="slide-body">
-              <span class="slide-num">1</span>
-              <h3>Everything your pet needs, in one place.</h3>
-              <p>Keep your pet's identity, health, reminders and daily care organized with TOOQ.</p>
-            </div>
-          </article>
-
-          <article class="slide">
-            <div class="slide-visual visual-ai" aria-hidden="true">
-              <div class="spark-orb">
-                <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 2C14 2 15.4 9.6 15.4 13C15.4 13 23 14.4 26 14C26 14 18.4 15.4 15.4 15C15.4 15 14 22.6 14 26C14 26 12.6 18.4 12.6 15C12.6 15 5 13.6 2 14C2 14 9.6 12.6 12.6 13C12.6 13 14 5.4 14 2Z" fill="#fff"/><path opacity="0.85" d="M22 4C22 4 22.7 7.2 22.7 8.5C22.7 8.5 26 9.2 27 9C27 9 23.8 9.7 22.7 9.5C22.7 9.5 22 12.8 22 14C22 14 21.3 10.8 21.3 9.5C21.3 9.5 18 8.8 17 9C17 9 20.2 8.3 21.3 8.5C21.3 8.5 22 5.2 22 4Z" fill="#fff"/></svg>
-              </div>
-              <div class="ai-card">
-                <div class="head">
-                  <div class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 2C14 2 15.4 9.6 15.4 13C15.4 13 23 14.4 26 14C26 14 18.4 15.4 15.4 15C15.4 15 14 22.6 14 26C14 26 12.6 18.4 12.6 15C12.6 15 5 13.6 2 14C2 14 9.6 12.6 12.6 13C12.6 13 14 5.4 14 2Z" fill="#fff"/></svg></div>
-                  <div><strong>AI Assistant</strong><small>Smart care, just for your pet. ✨</small></div>
+      <section class="story" id="features">
+        <div class="container">
+          <div class="heading">
+            <h2>Your pet, connected.</h2>
+            <p class="lead">Identity, care and safety — the three things TOOQ takes care of for you.</p>
+          </div>
+          <div class="slides">
+            <article class="slide">
+              <div class="slide-visual visual-care" aria-hidden="true">
+                <img src="assets/pet_avatar.svg" alt="" />
+                <div class="cues">
+                  <span class="chip">Digital ID</span>
+                  <span class="chip coral">Health</span>
+                  <span class="chip">Reminders</span>
                 </div>
-                <div class="ai-tiles">
-                  <div class="ai-tile">
-                    <div class="ic coral"><svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true"><path d="M15.28 3.38a4.03 4.03 0 0 0-5.7 0L8.8 4.16l-.78-.78a4.03 4.03 0 1 0-5.7 5.7l.78.78L8.8 15.57l5.7-5.7.78-.78a4.03 4.03 0 0 0 0-5.7Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                    <strong>Ask about appetite</strong><span>Get helpful insights</span>
+              </div>
+              <div class="slide-body">
+                <span class="slide-num">1</span>
+                <h3>Everything your pet needs, in one place.</h3>
+                <p>Keep your pet's identity, health, reminders and daily care organized with TOOQ.</p>
+              </div>
+            </article>
+
+            <article class="slide">
+              <div class="slide-visual visual-ai" aria-hidden="true">
+                <div class="spark-orb">
+                  <svg viewBox="0 0 28 28" aria-hidden="true">
+                    <path d="M14 2C14 2 15.4 9.6 15.4 13C15.4 13 23 14.4 26 14C26 14 18.4 15.4 15.4 15C15.4 15 14 22.6 14 26C14 26 12.6 18.4 12.6 15C12.6 15 5 13.6 2 14C2 14 9.6 12.6 12.6 13C12.6 13 14 5.4 14 2Z" fill="#fff" />
+                    <path
+                      opacity="0.85"
+                      d="M22 4C22 4 22.7 7.2 22.7 8.5C22.7 8.5 26 9.2 27 9C27 9 23.8 9.7 22.7 9.5C22.7 9.5 22 12.8 22 14C22 14 21.3 10.8 21.3 9.5C21.3 9.5 18 8.8 17 9C17 9 20.2 8.3 21.3 8.5C21.3 8.5 22 5.2 22 4Z"
+                      fill="#fff"
+                    />
+                  </svg>
+                </div>
+                <div class="ai-card">
+                  <div class="head">
+                    <div class="ic">
+                      <svg viewBox="0 0 28 28" aria-hidden="true">
+                        <path d="M14 2C14 2 15.4 9.6 15.4 13C15.4 13 23 14.4 26 14C26 14 18.4 15.4 15.4 15C15.4 15 14 22.6 14 26C14 26 12.6 18.4 12.6 15C12.6 15 5 13.6 2 14C2 14 9.6 12.6 12.6 13C12.6 13 14 5.4 14 2Z" fill="#fff" />
+                      </svg>
+                    </div>
+                    <div><strong>AI Assistant</strong><small>Smart care, just for your pet. ✨</small></div>
                   </div>
-                  <div class="ai-tile">
-                    <div class="ic teal"><svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true"><path d="M13.93 2.2H13.2V.73h-1.47V2.2H5.87V.73H4.4V2.2h-.73A1.47 1.47 0 0 0 2.2 3.67v10.26c0 .81.66 1.47 1.47 1.47h10.26c.81 0 1.47-.66 1.47-1.47V3.67c0-.81-.66-1.47-1.47-1.47Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="m5.13 7.33 1.84 1.84L11 5.87" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                    <strong>Vaccination record</strong><span>View and update</span>
-                  </div>
-                  <div class="ai-tile">
-                    <div class="ic dark"><svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true"><circle cx="8.8" cy="8.8" r="7.33" stroke="#fff" stroke-width="1.5"/><path d="M8.8 4.4v4.4l2.93 1.47" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                    <strong>Set reminder</strong><span>Never miss care</span>
+                  <div class="ai-tiles">
+                    <div class="ai-tile">
+                      <div class="ic coral">
+                        <svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true">
+                          <path d="M15.28 3.38a4.03 4.03 0 0 0-5.7 0L8.8 4.16l-.78-.78a4.03 4.03 0 1 0-5.7 5.7l.78.78L8.8 15.57l5.7-5.7.78-.78a4.03 4.03 0 0 0 0-5.7Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                      </div>
+                      <strong>Ask about appetite</strong><span>Get helpful insights</span>
+                    </div>
+                    <div class="ai-tile">
+                      <div class="ic teal">
+                        <svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true">
+                          <path
+                            d="M13.93 2.2H13.2V.73h-1.47V2.2H5.87V.73H4.4V2.2h-.73A1.47 1.47 0 0 0 2.2 3.67v10.26c0 .81.66 1.47 1.47 1.47h10.26c.81 0 1.47-.66 1.47-1.47V3.67c0-.81-.66-1.47-1.47-1.47Z"
+                            stroke="#fff"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          />
+                          <path d="m5.13 7.33 1.84 1.84L11 5.87" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                      </div>
+                      <strong>Vaccination record</strong><span>View and update</span>
+                    </div>
+                    <div class="ai-tile">
+                      <div class="ic dark">
+                        <svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true">
+                          <circle cx="8.8" cy="8.8" r="7.33" stroke="#fff" stroke-width="1.5" />
+                          <path d="M8.8 4.4v4.4l2.93 1.47" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                      </div>
+                      <strong>Set reminder</strong><span>Never miss care</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="slide-body">
-              <span class="slide-num">2</span>
-              <h3>Smarter care with TOOQ AI</h3>
-              <p>Get help with symptoms, food, reminders, products and nearby veterinary care.</p>
-              <span class="note">Helpful guidance — not a replacement for a veterinarian.</span>
-            </div>
-          </article>
+              <div class="slide-body">
+                <span class="slide-num">2</span>
+                <h3>Smarter care with TOOQ AI</h3>
+                <p>Get help with symptoms, food, reminders, products and nearby veterinary care.</p>
+                <span class="note">Helpful guidance — not a replacement for a veterinarian.</span>
+              </div>
+            </article>
 
-          <article class="slide">
-            <div class="slide-visual visual-safety" aria-hidden="true">
-              <div class="pet-card">
-                <div class="avatar"><img src="assets/pet_avatar.svg" alt=""></div>
-                <div>
-                  <div class="name">Max</div>
-                  <div class="meta">Golden Retriever • Male</div>
-                  <div class="tags">
-                    <span class="tag lost">Lost</span>
-                    <span class="tag active"><svg viewBox="0 0 14 14" fill="none"><path d="M11.67 7.58 7.58 11.67 2.33 6.42V2.33h4.08l5.26 5.25Z" stroke="#0E7C72" stroke-width="1.2" stroke-linejoin="round"/><circle cx="4.96" cy="4.96" r=".88" fill="#0E7C72"/></svg>Tag Active</span>
+            <article class="slide">
+              <div class="slide-visual visual-safety" aria-hidden="true">
+                <div class="pet-card">
+                  <div class="avatar"><img src="assets/pet_avatar.svg" alt="" /></div>
+                  <div>
+                    <div class="name">Max</div>
+                    <div class="meta">Golden Retriever • Male</div>
+                    <div class="tags">
+                      <span class="tag lost">Lost</span>
+                      <span class="tag active"
+                        ><svg viewBox="0 0 14 14" fill="none">
+                          <path d="M11.67 7.58 7.58 11.67 2.33 6.42V2.33h4.08l5.26 5.25Z" stroke="#0E7C72" stroke-width="1.2" stroke-linejoin="round" />
+                          <circle cx="4.96" cy="4.96" r=".88" fill="#0E7C72" /></svg
+                        >Tag Active</span
+                      >
+                    </div>
                   </div>
+                  <div class="seen">Last seen: Salmiya • 4:20 PM · 2 new sightings</div>
                 </div>
-                <div class="seen">Last seen: Salmiya • 4:20 PM · 2 new sightings</div>
+                <div class="cues">
+                  <span class="chip">Digital ID</span>
+                  <span class="chip teal"
+                    ><svg viewBox="0 0 14 14" fill="none">
+                      <path d="M7 12.83S11.67 10.5 11.67 7V2.92L7 1.17 2.33 2.92V7c0 3.5 4.67 5.83 4.67 5.83Z" stroke="#0E7C72" stroke-width="1.2" />
+                      <path d="m5.25 7 1.17 1.17 2.33-2.34" stroke="#0E7C72" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /></svg
+                    >Authorized</span
+                  >
+                </div>
               </div>
-              <div class="cues">
-                <span class="chip">Digital ID</span>
-                <span class="chip teal"><svg viewBox="0 0 14 14" fill="none"><path d="M7 12.83S11.67 10.5 11.67 7V2.92L7 1.17 2.33 2.92V7c0 3.5 4.67 5.83 4.67 5.83Z" stroke="#0E7C72" stroke-width="1.2"/><path d="m5.25 7 1.17 1.17 2.33-2.34" stroke="#0E7C72" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Authorized</span>
+              <div class="slide-body">
+                <span class="slide-num">3</span>
+                <h3>Stay connected when it matters</h3>
+                <p>Use your pet's digital ID, share access with trusted people and get help if your pet goes missing.</p>
+                <span class="note">TOOQ Tag is optional.</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="container">
+          <div class="heading">
+            <h2>What's inside the app</h2>
+            <p class="lead">More than a tag — TOOQ is a home for your pet's daily life.</p>
+          </div>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="ic">
+                <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M11.67 7.58 7.58 11.67 2.33 6.42V2.33h4.08l5.26 5.25Z" stroke="#0E7C72" stroke-width="1.1" stroke-linejoin="round" />
+                  <circle cx="4.96" cy="4.96" r=".88" fill="#0E7C72" />
+                </svg>
+              </div>
+              <h3>Digital ID &amp; TOOQ Tag</h3>
+              <p>Every pet gets a profile. Link an optional TOOQ Tag and whoever finds them can open it with the tag's PIN — no account needed.</p>
+            </div>
+
+            <div class="feature">
+              <div class="ic coral">
+                <svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true">
+                  <path d="M15.28 3.38a4.03 4.03 0 0 0-5.7 0L8.8 4.16l-.78-.78a4.03 4.03 0 1 0-5.7 5.7l.78.78L8.8 15.57l5.7-5.7.78-.78a4.03 4.03 0 0 0 0-5.7Z" stroke="#FF7A59" stroke-width="1.4" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Health records</h3>
+              <p>Vaccinations, vet visits, medications and weight — one tidy history you can share with your clinic.</p>
+            </div>
+
+            <div class="feature">
+              <div class="ic">
+                <svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true">
+                  <circle cx="8.8" cy="8.8" r="7.33" stroke="#0E7C72" stroke-width="1.4" />
+                  <path d="M8.8 4.4v4.4l2.93 1.47" stroke="#0E7C72" stroke-width="1.4" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Reminders &amp; calendar</h3>
+              <p>Never miss a booster, grooming day or medication dose. Upcoming care shows up right on your home screen.</p>
+            </div>
+
+            <div class="feature">
+              <div class="ic">
+                <svg viewBox="0 0 28 28" aria-hidden="true">
+                  <path d="M14 2C14 2 15.4 9.6 15.4 13C15.4 13 23 14.4 26 14C26 14 18.4 15.4 15.4 15C15.4 15 14 22.6 14 26C14 26 12.6 18.4 12.6 15C12.6 15 5 13.6 2 14C2 14 9.6 12.6 12.6 13C12.6 13 14 5.4 14 2Z" fill="#0E7C72" />
+                </svg>
+              </div>
+              <h3>TOOQ AI assistant</h3>
+              <p>Ask about symptoms, food or behaviour and get helpful guidance grounded in your pet's own records.</p>
+            </div>
+
+            <div class="feature">
+              <div class="ic">
+                <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M7 12.83S11.67 10.5 11.67 7V2.92L7 1.17 2.33 2.92V7c0 3.5 4.67 5.83 4.67 5.83Z" stroke="#0E7C72" stroke-width="1.1" />
+                  <path d="m5.25 7 1.17 1.17 2.33-2.34" stroke="#0E7C72" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>Trusted access</h3>
+              <p>Share a pet with family, a sitter or your vet. You stay the owner and decide exactly what they can see.</p>
+            </div>
+
+            <div class="feature">
+              <div class="ic coral">
+                <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <path d="M16 4 3.73 26.67h24.54L16 4Z" stroke="#FF7A59" stroke-width="2.4" stroke-linejoin="round" />
+                  <path d="M16 12v6.67M16 22.67h.01" stroke="#FF7A59" stroke-width="2.4" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>SOS &amp; lost pet alerts</h3>
+              <p>Mark your pet as lost with one tap. Finders see how to reach you, and sightings come straight back to you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="found" id="found">
+        <div class="container">
+          <div class="found-card">
+            <div>
+              <h2>Found a pet wearing a TOOQ Tag?</h2>
+              <p>You don't need an account. Open the app, tap <strong>I Found a Pet</strong> and enter the 4-digit PIN on the tag to see the pet's profile and let the owner know.</p>
+              <div class="steps" aria-hidden="true">
+                <span class="chip">1 · Open TOOQ</span>
+                <span class="chip">2 · I Found a Pet</span>
+                <span class="chip">3 · Enter the tag PIN</span>
               </div>
             </div>
-            <div class="slide-body">
-              <span class="slide-num">3</span>
-              <h3>Stay connected when it matters</h3>
-              <p>Use your pet's digital ID, share access with trusted people and get help if your pet goes missing.</p>
-              <span class="note">TOOQ Tag is optional.</span>
+            <a class="btn btn-ghost" href="#get-the-app">Get the TOOQ app</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="download">
+        <div class="container">
+          <div class="download-card">
+            <h2>Welcome to TOOQ</h2>
+            <p>Everything your pet needs, in one tap. Download the app and set up your first pet in minutes.</p>
+            <div class="store-buttons">
+              <a class="btn btn-primary" href="https://apps.apple.com/app/id6792516587" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M16.365 12.79c-.024-2.58 2.107-3.82 2.203-3.88-1.2-1.755-3.067-1.995-3.732-2.022-1.59-.16-3.1.937-3.907.937-.805 0-2.05-.914-3.37-.89-1.733.026-3.333 1.008-4.226 2.56-1.803 3.126-.46 7.754 1.295 10.29.858 1.24 1.88 2.634 3.222 2.584 1.293-.052 1.782-.837 3.346-.837 1.563 0 2.003.837 3.372.81 1.392-.026 2.274-1.263 3.126-2.508.985-1.44 1.392-2.834 1.416-2.906-.03-.013-2.718-1.043-2.745-4.138zM13.79 5.22c.713-.864 1.194-2.066 1.063-3.263-1.027.042-2.27.684-3.007 1.547-.66.764-1.238 1.987-1.083 3.16 1.146.089 2.315-.582 3.027-1.444z"
+                  />
+                </svg>
+                Download on the App Store
+              </a>
+              <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.tooqapp.com" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M3.6 2.3 13.2 12 3.6 21.7c-.3-.2-.5-.6-.5-1V3.3c0-.4.2-.8.5-1zm1.3-.6c.2-.1.5-.1.8 0l11.1 6.4-2.5 2.5L5 1.7zm12.9 7.1 2.8 1.6c.9.5.9 1.7 0 2.2l-2.8 1.6L15 11.9l2.8-3.1zM4.9 22.3l9.5-9.3 2.4 2.5-11.1 6.4c-.3.2-.6.2-.8.4z"
+                  />
+                </svg>
+                Get it on Google Play
+              </a>
             </div>
-          </article>
-
+            <p class="store-note supporting">Free to download on iPhone and Android.</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="features">
-      <div class="container">
-        <div class="heading">
-          <h2>What's inside the app</h2>
-          <p class="lead">More than a tag — TOOQ is a home for your pet's daily life.</p>
-        </div>
-        <div class="feature-grid">
-
-          <div class="feature">
-            <div class="ic"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11.67 7.58 7.58 11.67 2.33 6.42V2.33h4.08l5.26 5.25Z" stroke="#0E7C72" stroke-width="1.1" stroke-linejoin="round"/><circle cx="4.96" cy="4.96" r=".88" fill="#0E7C72"/></svg></div>
-            <h3>Digital ID &amp; TOOQ Tag</h3>
-            <p>Every pet gets a profile. Link an optional TOOQ Tag and whoever finds them can open it with the tag's PIN — no account needed.</p>
-          </div>
-
-          <div class="feature">
-            <div class="ic coral"><svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true"><path d="M15.28 3.38a4.03 4.03 0 0 0-5.7 0L8.8 4.16l-.78-.78a4.03 4.03 0 1 0-5.7 5.7l.78.78L8.8 15.57l5.7-5.7.78-.78a4.03 4.03 0 0 0 0-5.7Z" stroke="#FF7A59" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-            <h3>Health records</h3>
-            <p>Vaccinations, vet visits, medications and weight — one tidy history you can share with your clinic.</p>
-          </div>
-
-          <div class="feature">
-            <div class="ic"><svg viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true"><circle cx="8.8" cy="8.8" r="7.33" stroke="#0E7C72" stroke-width="1.4"/><path d="M8.8 4.4v4.4l2.93 1.47" stroke="#0E7C72" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-            <h3>Reminders &amp; calendar</h3>
-            <p>Never miss a booster, grooming day or medication dose. Upcoming care shows up right on your home screen.</p>
-          </div>
-
-          <div class="feature">
-            <div class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 2C14 2 15.4 9.6 15.4 13C15.4 13 23 14.4 26 14C26 14 18.4 15.4 15.4 15C15.4 15 14 22.6 14 26C14 26 12.6 18.4 12.6 15C12.6 15 5 13.6 2 14C2 14 9.6 12.6 12.6 13C12.6 13 14 5.4 14 2Z" fill="#0E7C72"/></svg></div>
-            <h3>TOOQ AI assistant</h3>
-            <p>Ask about symptoms, food or behaviour and get helpful guidance grounded in your pet's own records.</p>
-          </div>
-
-          <div class="feature">
-            <div class="ic"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 12.83S11.67 10.5 11.67 7V2.92L7 1.17 2.33 2.92V7c0 3.5 4.67 5.83 4.67 5.83Z" stroke="#0E7C72" stroke-width="1.1"/><path d="m5.25 7 1.17 1.17 2.33-2.34" stroke="#0E7C72" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Trusted access</h3>
-            <p>Share a pet with family, a sitter or your vet. You stay the owner and decide exactly what they can see.</p>
-          </div>
-
-          <div class="feature">
-            <div class="ic coral"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4 3.73 26.67h24.54L16 4Z" stroke="#FF7A59" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 12v6.67M16 22.67h.01" stroke="#FF7A59" stroke-width="2.4" stroke-linecap="round"/></svg></div>
-            <h3>SOS &amp; lost pet alerts</h3>
-            <p>Mark your pet as lost with one tap. Finders see how to reach you, and sightings come straight back to you.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="found" id="found">
-      <div class="container">
-        <div class="found-card">
-          <div>
-            <h2>Found a pet wearing a TOOQ Tag?</h2>
-            <p>You don't need an account. Open the app, tap <strong>I Found a Pet</strong> and enter the 4-digit PIN on the tag to see the pet's profile and let the owner know.</p>
-            <div class="steps" aria-hidden="true">
-              <span class="chip">1 · Open TOOQ</span>
-              <span class="chip">2 · I Found a Pet</span>
-              <span class="chip">3 · Enter the tag PIN</span>
+      <section class="about">
+        <div class="container">
+          <div class="about-card">
+            <div>
+              <h2>Proudly built in Kuwait</h2>
+              <p>TOOQ is developed and owned by <strong>Tanami Company</strong>, a Kuwaiti company on a mission to keep pets and their families together.</p>
+            </div>
+            <div class="about-address">
+              <strong>Tanami Company</strong>
+              <p>
+                Shop 2, Heirs of Abdullah Khalaf Sayer Al-Harbi Building<br />
+                Street 14, Block 4, Mangaf<br />
+                Al-Ahmadi Governorate, Kuwait<br />
+                Phone: <a href="tel:+96566676522">+965 6667 6522</a>
+              </p>
             </div>
           </div>
-          <a class="btn btn-ghost" href="#get-the-app">Get the TOOQ app</a>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <section class="download">
+    <footer class="site-footer">
       <div class="container">
-        <div class="download-card">
-          <h2>Welcome to TOOQ</h2>
-          <p>Everything your pet needs, in one tap. Download the app and set up your first pet in minutes.</p>
-          <div class="store-buttons">
-            <a class="btn btn-primary" href="https://apps.apple.com/app/id6792516587" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 12.79c-.024-2.58 2.107-3.82 2.203-3.88-1.2-1.755-3.067-1.995-3.732-2.022-1.59-.16-3.1.937-3.907.937-.805 0-2.05-.914-3.37-.89-1.733.026-3.333 1.008-4.226 2.56-1.803 3.126-.46 7.754 1.295 10.29.858 1.24 1.88 2.634 3.222 2.584 1.293-.052 1.782-.837 3.346-.837 1.563 0 2.003.837 3.372.81 1.392-.026 2.274-1.263 3.126-2.508.985-1.44 1.392-2.834 1.416-2.906-.03-.013-2.718-1.043-2.745-4.138zM13.79 5.22c.713-.864 1.194-2.066 1.063-3.263-1.027.042-2.27.684-3.007 1.547-.66.764-1.238 1.987-1.083 3.16 1.146.089 2.315-.582 3.027-1.444z"/></svg>
-              Download on the App Store
-            </a>
-            <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.tooqapp.com" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3 13.2 12 3.6 21.7c-.3-.2-.5-.6-.5-1V3.3c0-.4.2-.8.5-1zm1.3-.6c.2-.1.5-.1.8 0l11.1 6.4-2.5 2.5L5 1.7zm12.9 7.1 2.8 1.6c.9.5.9 1.7 0 2.2l-2.8 1.6L15 11.9l2.8-3.1zM4.9 22.3l9.5-9.3 2.4 2.5-11.1 6.4c-.3.2-.6.2-.8.4z"/></svg>
-              Get it on Google Play
-            </a>
-          </div>
-          <p class="store-note supporting">Free to download on iPhone and Android.</p>
+        <div class="top">
+          <img class="logo" src="assets/logo.svg" alt="TOOQ" />
+          <p>Your pet, connected. TOOQ keeps you and your pet together — identity, care and safety in one app.</p>
+        </div>
+        <div class="legal">
+          © 2026 Tanami Company. All rights reserved.<br />
+          TOOQ is developed and owned by Tanami Company — Mangaf, Al-Ahmadi Governorate, Kuwait.<br />
+          Contact: <a href="tel:+96566676522">+965 6667 6522</a><br />
+          Are you a pet shop or a clinic? <a href="register/">Join TOOQ as a merchant or clinic</a>
         </div>
       </div>
-    </section>
-
-    <section class="about">
-      <div class="container">
-        <div class="about-card">
-          <div>
-            <h2>Proudly built in Kuwait</h2>
-            <p>
-              TOOQ is developed and owned by <strong>Tanami Company</strong>, a Kuwaiti company
-              on a mission to keep pets and their families together.
-            </p>
-          </div>
-          <div class="about-address">
-            <strong>Tanami Company</strong>
-            <p>
-              Shop 2, Heirs of Abdullah Khalaf Sayer Al-Harbi Building<br>
-              Street 14, Block 4, Mangaf<br>
-              Al-Ahmadi Governorate, Kuwait<br>
-              Phone: <a href="tel:+96566676522">+965 6667 6522</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="top">
-        <img class="logo" src="assets/logo.svg" alt="TOOQ">
-        <p>Your pet, connected. TOOQ keeps you and your pet together — identity, care and safety in one app.</p>
-      </div>
-      <div class="legal">
-        © 2026 Tanami Company. All rights reserved.<br>
-        TOOQ is developed and owned by Tanami Company — Mangaf, Al-Ahmadi Governorate, Kuwait.<br>
-        Contact: <a href="tel:+96566676522">+965 6667 6522</a><br>
-        Are you a pet shop or a clinic? <a href="register/">Join TOOQ as a merchant or clinic</a>
-      </div>
-    </div>
-  </footer>
-
-</body>
+    </footer>
+  </body>
 </html>

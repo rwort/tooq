@@ -1,407 +1,505 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Join TOOQ — For merchants and clinics</title>
-  <meta name="description" content="Pet shops, groomers and veterinary clinics: register your interest and the TOOQ team will get in touch about joining the platform.">
-  <meta name="theme-color" content="#FFF6EE">
-  <meta name="apple-itunes-app" content="app-id=6792516587">
-  <link rel="icon" type="image/png" href="../assets/app_icon.png">
-  <link rel="apple-touch-icon" href="../assets/app_icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/site.css">
-  <style>
-    /* ---------- intro ---------- */
-    .intro {
-      position: relative;
-      overflow: hidden;
-      background: var(--g-splash);
-      padding: 40px 0 120px;
-      text-align: center;
-    }
-    .intro::before {
-      content: "";
-      position: absolute;
-      top: -220px;
-      right: -120px;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 122, 89, 0.22) 0%, rgba(255, 122, 89, 0) 70%);
-      pointer-events: none;
-    }
-    .intro .container { position: relative; }
-    .intro-avatar { width: 120px; height: 120px; margin: 0 auto 16px; }
-    .intro h1 { max-width: 680px; margin: 0 auto 12px; }
-    .intro h1 span { color: var(--teal-dark); }
-    .intro .lead { max-width: 560px; margin: 0 auto; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join TOOQ — For merchants and clinics</title>
+    <meta name="description" content="Pet shops, groomers and veterinary clinics: register your interest and the TOOQ team will get in touch about joining the platform." />
+    <meta name="theme-color" content="#FFF6EE" />
+    <meta name="apple-itunes-app" content="app-id=6792516587" />
+    <link rel="icon" type="image/png" href="../assets/app_icon.png" />
+    <link rel="apple-touch-icon" href="../assets/app_icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <style>
+      /* ---------- intro ---------- */
+      .intro {
+        position: relative;
+        overflow: hidden;
+        background: var(--g-splash);
+        padding: 40px 0 120px;
+        text-align: center;
+      }
+      .intro::before {
+        content: "";
+        position: absolute;
+        top: -220px;
+        right: -120px;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 122, 89, 0.22) 0%, rgba(255, 122, 89, 0) 70%);
+        pointer-events: none;
+      }
+      .intro .container {
+        position: relative;
+      }
+      .intro-avatar {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 16px;
+      }
+      .intro h1 {
+        max-width: 680px;
+        margin: 0 auto 12px;
+      }
+      .intro h1 span {
+        color: var(--teal-dark);
+      }
+      .intro .lead {
+        max-width: 560px;
+        margin: 0 auto;
+      }
 
-    /* ---------- form card ---------- */
-    .form-section { padding: 0 0 56px; margin-top: -80px; position: relative; }
-    .form-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--r-card);
-      box-shadow: var(--shadow-card);
-      padding: 32px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .form-card > form > h2 {
-      font-size: 1.25rem;
-      margin-bottom: 4px;
-    }
-    .form-card .supporting { margin-bottom: 22px; }
-    @media (max-width: 520px) {
-      .intro { padding-bottom: 96px; }
-      .form-section { margin-top: -64px; }
-      .form-card { padding: 24px 18px; }
-    }
+      /* ---------- form card ---------- */
+      .form-section {
+        padding: 0 0 56px;
+        margin-top: -80px;
+        position: relative;
+      }
+      .form-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--r-card);
+        box-shadow: var(--shadow-card);
+        padding: 32px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .form-card > form > h2 {
+        font-size: 1.25rem;
+        margin-bottom: 4px;
+      }
+      .form-card .supporting {
+        margin-bottom: 22px;
+      }
+      @media (max-width: 520px) {
+        .intro {
+          padding-bottom: 96px;
+        }
+        .form-section {
+          margin-top: -64px;
+        }
+        .form-card {
+          padding: 24px 18px;
+        }
+      }
 
-    .field { margin-bottom: 18px; }
-    .field label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.875rem;
-      margin-bottom: 6px;
-    }
-    .field input {
-      width: 100%;
-      height: 52px;
-      font: inherit;
-      font-size: 1rem;
-      color: var(--text);
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--r-input);
-      padding: 0 16px;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-    }
-    .field input::placeholder { color: var(--text-secondary); opacity: 0.7; }
-    .field input:focus {
-      outline: none;
-      border-color: var(--teal);
-      box-shadow: 0 0 0 4px var(--teal-soft);
-    }
-    .field label .optional { font-weight: 400; color: var(--text-secondary); }
-    .field .hint {
-      color: var(--text-secondary);
-      font-size: 0.8125rem;
-      margin-top: 6px;
-    }
-    /* Safari and iOS shrink a date input to its text; keep it the height of the others. */
-    .field input[type="date"] {
-      -webkit-appearance: none;
-      appearance: none;
-      display: block;
-      min-height: 52px;
-      line-height: 50px;
-    }
-    .field.invalid input { border-color: var(--danger); box-shadow: none; }
-    .field-error {
-      display: none;
-      color: var(--danger);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      margin-top: 6px;
-    }
-    .field.invalid .field-error { display: block; }
-    /* Phone numbers are always LTR Western digits. */
-    .field input[type="tel"] { direction: ltr; unicode-bidi: isolate; }
+      .field {
+        margin-bottom: 18px;
+      }
+      .field label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-bottom: 6px;
+      }
+      .field input {
+        width: 100%;
+        height: 52px;
+        font: inherit;
+        font-size: 1rem;
+        color: var(--text);
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-input);
+        padding: 0 16px;
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .field input::placeholder {
+        color: var(--text-secondary);
+        opacity: 0.7;
+      }
+      .field input:focus {
+        outline: none;
+        border-color: var(--teal);
+        box-shadow: 0 0 0 4px var(--teal-soft);
+      }
+      .field label .optional {
+        font-weight: 400;
+        color: var(--text-secondary);
+      }
+      .field .hint {
+        color: var(--text-secondary);
+        font-size: 0.8125rem;
+        margin-top: 6px;
+      }
+      /* Safari and iOS shrink a date input to its text; keep it the height of the others. */
+      .field input[type="date"] {
+        -webkit-appearance: none;
+        appearance: none;
+        display: block;
+        min-height: 52px;
+        line-height: 50px;
+      }
+      .field.invalid input {
+        border-color: var(--danger);
+        box-shadow: none;
+      }
+      .field-error {
+        display: none;
+        color: var(--danger);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        margin-top: 6px;
+      }
+      .field.invalid .field-error {
+        display: block;
+      }
+      /* Phone numbers are always LTR Western digits. */
+      .field input[type="tel"] {
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
 
-    /*
+      /*
      * Honeypot. Pushed off-screen rather than display:none, because some bots skip
      * hidden inputs but fill anything with a name. A person never sees it; if it comes
      * back filled, the API answers success and keeps nothing.
      */
-    .extra-field {
-      position: absolute;
-      left: -10000px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-
-    .consent {
-      font-size: 0.8125rem;
-      color: var(--text-secondary);
-      margin: 2px 0 18px;
-    }
-
-    .btn-submit { width: 100%; }
-    .btn-submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
-
-    .form-status {
-      display: none;
-      margin-top: 14px;
-      padding: 12px 16px;
-      border-radius: var(--r-input);
-      font-weight: 600;
-      font-size: 0.875rem;
-    }
-    .form-status.error { display: block; background: var(--danger-soft); color: var(--danger); }
-
-    /* ---------- success state ---------- */
-    .success {
-      display: none;
-      text-align: center;
-      padding: 8px 0;
-    }
-    .success .mark {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: var(--teal-soft);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 16px;
-    }
-    .success .mark svg { width: 34px; height: 34px; }
-    .success h2 { font-size: 1.5rem; margin-bottom: 8px; }
-    .success p { color: var(--text-secondary); max-width: 420px; margin: 0 auto 22px; }
-    .form-card.done form { display: none; }
-    .form-card.done .success { display: block; }
-
-    /* ---------- side note ---------- */
-    .why {
-      max-width: 600px;
-      margin: 28px auto 0;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .why div {
-      background: var(--teal-soft);
-      border: 1px solid var(--border);
-      border-radius: var(--r-button);
-      padding: 14px;
-      font-size: 0.8125rem;
-      color: var(--teal-dark);
-      font-weight: 600;
-      text-align: center;
-    }
-    @media (max-width: 520px) { .why { grid-template-columns: 1fr; } }
-  </style>
-</head>
-<body>
-
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="../" aria-label="TOOQ home"><img src="../assets/logo.svg" alt="TOOQ"></a>
-      <nav>
-        <a href="../#features">Features</a>
-        <a href="../#found">Found a pet?</a>
-        <a class="btn btn-primary btn-small" href="../#get-the-app">Get the app</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="intro">
-      <div class="container">
-        <img class="intro-avatar" src="../assets/pet_avatar.svg" alt="">
-        <h1>Join TOOQ as a <span>merchant or clinic</span></h1>
-        <p class="lead">
-          Pet shops, groomers and veterinary clinics: leave your details and the TOOQ team
-          will get in touch about bringing your business onto the platform.
-        </p>
-      </div>
-    </section>
-
-    <section class="form-section">
-      <div class="container">
-        <div class="form-card" id="card">
-          <form id="register-form" novalidate>
-            <h2>Register your interest</h2>
-            <p class="supporting">Takes less than a minute. We'll call or message you back.</p>
-
-            <div class="field" data-field="businessName">
-              <label for="businessName">Business name</label>
-              <input type="text" id="businessName" name="businessName" maxlength="120" autocomplete="organization" placeholder="e.g. Salmiya Pet Clinic" required>
-              <div class="field-error"></div>
-            </div>
-
-            <div class="field" data-field="contactName">
-              <label for="contactName">Contact person</label>
-              <input type="text" id="contactName" name="contactName" maxlength="120" autocomplete="name" placeholder="Who should we ask for?" required>
-              <div class="field-error"></div>
-            </div>
-
-            <div class="field" data-field="phone">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" maxlength="24" autocomplete="tel" inputmode="tel" placeholder="+965 6667 6522" required>
-              <div class="field-error"></div>
-            </div>
-
-            <div class="field" data-field="exhibitionDate">
-              <label for="exhibitionDate">Present at the exhibition on <span class="optional">(optional)</span></label>
-              <input type="date" id="exhibitionDate" name="exhibitionDate" autocomplete="off">
-              <div class="hint">Exhibiting? Tell us the day we can find you at your stand.</div>
-              <div class="field-error"></div>
-            </div>
-
-            <div class="extra-field" aria-hidden="true">
-              <label for="website">Website</label>
-              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-            </div>
-
-            <p class="consent">
-              By sending this form you agree that Tanami Company may contact you about TOOQ.
-              We never share your details with anyone else.
-            </p>
-
-            <button class="btn btn-primary btn-submit" type="submit" id="submit">Register my interest</button>
-            <div class="form-status" id="status" role="alert"></div>
-          </form>
-
-          <div class="success">
-            <div class="mark">
-              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 22C21.4 22 24 17.6 24 13.6C24 9.6 21.4 6 17.6 6C13.8 6 11 10 11 14.2C11 18.4 12.8 22 17 22ZM31 22C35.2 22 37 18.4 37 14.2C37 10 34.4 6 30.4 6C26.4 6 24 10 24 13.6C24 17.2 26.6 22 31 22ZM10 26C5.6 26 2 29.4 2 33.6C2 37.8 5.4 40 9.6 40C12.6 40 14.6 38.4 16 36C17.8 32.6 14.4 26 10 26ZM38 26C33.6 26 30.2 32.6 32 36C33.4 38.4 35.4 40 38.4 40C42.6 40 46 37.8 46 33.6C46 29.4 42.4 26 38 26ZM24 26C18 26 12 32.6 12 38C12 42.4 16.6 44 24 44C31.4 44 36 42.4 36 38C36 32.6 30 26 24 26Z" fill="#0E7C72"/></svg>
-            </div>
-            <h2>Thank you!</h2>
-            <p>We've received your details. Someone from the TOOQ team will reach out soon.</p>
-            <a class="btn btn-ghost" href="../">Back to tooq.ai</a>
-          </div>
-        </div>
-
-        <div class="why" aria-hidden="true">
-          <div>Reach TOOQ pet owners near you</div>
-          <div>Bookings &amp; orders in the app</div>
-          <div>No setup fee to get started</div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="top">
-        <img class="logo" src="../assets/logo.svg" alt="TOOQ">
-        <p>Your pet, connected. TOOQ keeps you and your pet together — identity, care and safety in one app.</p>
-      </div>
-      <div class="legal">
-        © 2026 Tanami Company. All rights reserved.<br>
-        TOOQ is developed and owned by Tanami Company — Mangaf, Al-Ahmadi Governorate, Kuwait.<br>
-        Contact: <a href="tel:+96566676522">+965 6667 6522</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // The TOOQ API (the ApiCloudFrontUrl output of the deployed stack). Endpoint docs:
-    // tooq-backend/docs/api.md, "Merchant registration".
-    const API_BASE = "https://d18iikljzzylqe.cloudfront.net";
-
-    const form = document.getElementById("register-form");
-    const card = document.getElementById("card");
-    const submit = document.getElementById("submit");
-    const status = document.getElementById("status");
-    // The API ignores submissions faster than a person could type; measured here so
-    // there is no clock to disagree with.
-    const openedAt = Date.now();
-
-    const messages = {
-      businessName: "Please enter your business name (at least 2 characters).",
-      contactName: "Please tell us who we should ask for.",
-      phone: "Please enter a valid phone number, e.g. +965 6667 6522.",
-      exhibitionDate: "Please pick a valid date, or leave it empty.",
-    };
-
-    // Past days make no sense for "I'll be at the exhibition on"; the picker starts today.
-    form.exhibitionDate.min = new Date().toISOString().slice(0, 10);
-
-    function clearErrors() {
-      form.querySelectorAll(".field.invalid").forEach((el) => el.classList.remove("invalid"));
-      status.className = "form-status";
-      status.textContent = "";
-    }
-
-    function showFieldError(name, message) {
-      const field = form.querySelector(`.field[data-field="${name}"]`);
-      if (!field) return false;
-      field.classList.add("invalid");
-      field.querySelector(".field-error").textContent = message;
-      return true;
-    }
-
-    function showStatus(message) {
-      status.textContent = message;
-      status.className = "form-status error";
-    }
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      clearErrors();
-
-      const body = {
-        businessName: form.businessName.value.trim(),
-        contactName: form.contactName.value.trim(),
-        phone: form.phone.value.trim(),
-        // YYYY-MM-DD from the picker; the API takes null for "not attending".
-        exhibitionDate: form.exhibitionDate.value || null,
-        website: form.website.value,
-        elapsedMs: Date.now() - openedAt,
-      };
-
-      // Cheap local checks so the common mistakes never need a round trip.
-      let ok = true;
-      if (body.businessName.length < 2) ok = showFieldError("businessName", messages.businessName) && false;
-      if (body.contactName.length < 1) ok = showFieldError("contactName", messages.contactName) && false;
-      if (body.phone.replace(/\D/g, "").length < 7) ok = showFieldError("phone", messages.phone) && false;
-      if (body.exhibitionDate !== null && !/^\d{4}-\d{2}-\d{2}$/.test(body.exhibitionDate)) ok = showFieldError("exhibitionDate", messages.exhibitionDate) && false;
-      if (!ok) {
-        form.querySelector(".field.invalid input")?.focus();
-        return;
+      .extra-field {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
       }
 
-      submit.disabled = true;
-      submit.textContent = "Sending…";
-      try {
-        const res = await fetch(`${API_BASE}/api/public/merchants`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
+      .consent {
+        font-size: 0.8125rem;
+        color: var(--text-secondary);
+        margin: 2px 0 18px;
+      }
 
-        if (res.status === 201) {
-          card.classList.add("done");
-          card.scrollIntoView({ behavior: "smooth", block: "start" });
+      .btn-submit {
+        width: 100%;
+      }
+      .btn-submit:disabled {
+        opacity: 0.6;
+        cursor: wait;
+        transform: none;
+      }
+
+      .form-status {
+        display: none;
+        margin-top: 14px;
+        padding: 12px 16px;
+        border-radius: var(--r-input);
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+      .form-status.error {
+        display: block;
+        background: var(--danger-soft);
+        color: var(--danger);
+      }
+
+      /* ---------- success state ---------- */
+      .success {
+        display: none;
+        text-align: center;
+        padding: 8px 0;
+      }
+      .success .mark {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: var(--teal-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+      }
+      .success .mark svg {
+        width: 34px;
+        height: 34px;
+      }
+      .success h2 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+      }
+      .success p {
+        color: var(--text-secondary);
+        max-width: 420px;
+        margin: 0 auto 22px;
+      }
+      .form-card.done form {
+        display: none;
+      }
+      .form-card.done .success {
+        display: block;
+      }
+
+      /* ---------- side note ---------- */
+      .why {
+        max-width: 600px;
+        margin: 28px auto 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .why div {
+        background: var(--teal-soft);
+        border: 1px solid var(--border);
+        border-radius: var(--r-button);
+        padding: 14px;
+        font-size: 0.8125rem;
+        color: var(--teal-dark);
+        font-weight: 600;
+        text-align: center;
+      }
+      @media (max-width: 520px) {
+        .why {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "3276633185865769");
+      fbq("track", "PageView");
+    </script>
+    <noscript><img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=3276633185865769&ev=PageView&noscript=1" /></noscript>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="../" aria-label="TOOQ home"><img src="../assets/logo.svg" alt="TOOQ" /></a>
+        <nav>
+          <a href="../#features">Features</a>
+          <a href="../#found">Found a pet?</a>
+          <a class="btn btn-primary btn-small" href="../#get-the-app">Get the app</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="container">
+          <img class="intro-avatar" src="../assets/pet_avatar.svg" alt="" />
+          <h1>Join TOOQ as a <span>merchant or clinic</span></h1>
+          <p class="lead">Pet shops, groomers and veterinary clinics: leave your details and the TOOQ team will get in touch about bringing your business onto the platform.</p>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="container">
+          <div class="form-card" id="card">
+            <form id="register-form" novalidate>
+              <h2>Register your interest</h2>
+              <p class="supporting">Takes less than a minute. We'll call or message you back.</p>
+
+              <div class="field" data-field="businessName">
+                <label for="businessName">Business name</label>
+                <input type="text" id="businessName" name="businessName" maxlength="120" autocomplete="organization" placeholder="e.g. Salmiya Pet Clinic" required />
+                <div class="field-error"></div>
+              </div>
+
+              <div class="field" data-field="contactName">
+                <label for="contactName">Contact person</label>
+                <input type="text" id="contactName" name="contactName" maxlength="120" autocomplete="name" placeholder="Who should we ask for?" required />
+                <div class="field-error"></div>
+              </div>
+
+              <div class="field" data-field="phone">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" maxlength="24" autocomplete="tel" inputmode="tel" placeholder="+965 6667 6522" required />
+                <div class="field-error"></div>
+              </div>
+
+              <div class="field" data-field="exhibitionDate">
+                <label for="exhibitionDate">Present at the exhibition on <span class="optional">(optional)</span></label>
+                <input type="date" id="exhibitionDate" name="exhibitionDate" autocomplete="off" />
+                <div class="hint">Exhibiting? Tell us the day we can find you at your stand.</div>
+                <div class="field-error"></div>
+              </div>
+
+              <div class="extra-field" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <p class="consent">By sending this form you agree that Tanami Company may contact you about TOOQ. We never share your details with anyone else.</p>
+
+              <button class="btn btn-primary btn-submit" type="submit" id="submit">Register my interest</button>
+              <div class="form-status" id="status" role="alert"></div>
+            </form>
+
+            <div class="success">
+              <div class="mark">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                  <path
+                    d="M17 22C21.4 22 24 17.6 24 13.6C24 9.6 21.4 6 17.6 6C13.8 6 11 10 11 14.2C11 18.4 12.8 22 17 22ZM31 22C35.2 22 37 18.4 37 14.2C37 10 34.4 6 30.4 6C26.4 6 24 10 24 13.6C24 17.2 26.6 22 31 22ZM10 26C5.6 26 2 29.4 2 33.6C2 37.8 5.4 40 9.6 40C12.6 40 14.6 38.4 16 36C17.8 32.6 14.4 26 10 26ZM38 26C33.6 26 30.2 32.6 32 36C33.4 38.4 35.4 40 38.4 40C42.6 40 46 37.8 46 33.6C46 29.4 42.4 26 38 26ZM24 26C18 26 12 32.6 12 38C12 42.4 16.6 44 24 44C31.4 44 36 42.4 36 38C36 32.6 30 26 24 26Z"
+                    fill="#0E7C72"
+                  />
+                </svg>
+              </div>
+              <h2>Thank you!</h2>
+              <p>We've received your details. Someone from the TOOQ team will reach out soon.</p>
+              <a class="btn btn-ghost" href="../">Back to tooq.ai</a>
+            </div>
+          </div>
+
+          <div class="why" aria-hidden="true">
+            <div>Reach TOOQ pet owners near you</div>
+            <div>Bookings &amp; orders in the app</div>
+            <div>No setup fee to get started</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="top">
+          <img class="logo" src="../assets/logo.svg" alt="TOOQ" />
+          <p>Your pet, connected. TOOQ keeps you and your pet together — identity, care and safety in one app.</p>
+        </div>
+        <div class="legal">
+          © 2026 Tanami Company. All rights reserved.<br />
+          TOOQ is developed and owned by Tanami Company — Mangaf, Al-Ahmadi Governorate, Kuwait.<br />
+          Contact: <a href="tel:+96566676522">+965 6667 6522</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // The TOOQ API (the ApiCloudFrontUrl output of the deployed stack). Endpoint docs:
+      // tooq-backend/docs/api.md, "Merchant registration".
+      const API_BASE = "https://d18iikljzzylqe.cloudfront.net";
+
+      const form = document.getElementById("register-form");
+      const card = document.getElementById("card");
+      const submit = document.getElementById("submit");
+      const status = document.getElementById("status");
+      // The API ignores submissions faster than a person could type; measured here so
+      // there is no clock to disagree with.
+      const openedAt = Date.now();
+
+      const messages = {
+        businessName: "Please enter your business name (at least 2 characters).",
+        contactName: "Please tell us who we should ask for.",
+        phone: "Please enter a valid phone number, e.g. +965 6667 6522.",
+        exhibitionDate: "Please pick a valid date, or leave it empty.",
+      };
+
+      // Past days make no sense for "I'll be at the exhibition on"; the picker starts today.
+      form.exhibitionDate.min = new Date().toISOString().slice(0, 10);
+
+      function clearErrors() {
+        form.querySelectorAll(".field.invalid").forEach((el) => el.classList.remove("invalid"));
+        status.className = "form-status";
+        status.textContent = "";
+      }
+
+      function showFieldError(name, message) {
+        const field = form.querySelector(`.field[data-field="${name}"]`);
+        if (!field) return false;
+        field.classList.add("invalid");
+        field.querySelector(".field-error").textContent = message;
+        return true;
+      }
+
+      function showStatus(message) {
+        status.textContent = message;
+        status.className = "form-status error";
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        clearErrors();
+
+        const body = {
+          businessName: form.businessName.value.trim(),
+          contactName: form.contactName.value.trim(),
+          phone: form.phone.value.trim(),
+          // YYYY-MM-DD from the picker; the API takes null for "not attending".
+          exhibitionDate: form.exhibitionDate.value || null,
+          website: form.website.value,
+          elapsedMs: Date.now() - openedAt,
+        };
+
+        // Cheap local checks so the common mistakes never need a round trip.
+        let ok = true;
+        if (body.businessName.length < 2) ok = showFieldError("businessName", messages.businessName) && false;
+        if (body.contactName.length < 1) ok = showFieldError("contactName", messages.contactName) && false;
+        if (body.phone.replace(/\D/g, "").length < 7) ok = showFieldError("phone", messages.phone) && false;
+        if (body.exhibitionDate !== null && !/^\d{4}-\d{2}-\d{2}$/.test(body.exhibitionDate)) ok = showFieldError("exhibitionDate", messages.exhibitionDate) && false;
+        if (!ok) {
+          form.querySelector(".field.invalid input")?.focus();
           return;
         }
 
-        let payload = null;
-        try { payload = await res.json(); } catch (_) { /* no body */ }
-        const error = payload && payload.error ? payload.error : null;
+        submit.disabled = true;
+        submit.textContent = "Sending…";
+        try {
+          const res = await fetch(`${API_BASE}/api/public/merchants`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          });
 
-        if (res.status === 400 && error && Array.isArray(error.details)) {
-          let shown = false;
-          for (const d of error.details) {
-            const name = d.field || "";
-            shown = showFieldError(name, messages[name] || d.message || "Please check this field.") || shown;
+          if (res.status === 201) {
+            card.classList.add("done");
+            card.scrollIntoView({ behavior: "smooth", block: "start" });
+            return;
           }
-          if (!shown) showStatus("Please check the form and try again.");
-          form.querySelector(".field.invalid input")?.focus();
-        } else if (res.status === 400 && error && error.details && error.details.field === "phone") {
-          showFieldError("phone", messages.phone);
-          form.phone.focus();
-        } else if (res.status === 409) {
-          showFieldError("phone", "This phone number is already registered with us. We'll be in touch!");
-          form.phone.focus();
-        } else if (res.status === 429) {
-          showStatus("Too many registrations from your network right now. Please try again in an hour.");
-        } else {
-          showStatus("Something went wrong on our side. Please try again in a moment.");
-        }
-      } catch (_) {
-        showStatus("We couldn't reach the server. Check your connection and try again.");
-      } finally {
-        submit.disabled = false;
-        submit.textContent = "Register my interest";
-      }
-    });
-  </script>
 
-</body>
+          let payload = null;
+          try {
+            payload = await res.json();
+          } catch (_) {
+            /* no body */
+          }
+          const error = payload && payload.error ? payload.error : null;
+
+          if (res.status === 400 && error && Array.isArray(error.details)) {
+            let shown = false;
+            for (const d of error.details) {
+              const name = d.field || "";
+              shown = showFieldError(name, messages[name] || d.message || "Please check this field.") || shown;
+            }
+            if (!shown) showStatus("Please check the form and try again.");
+            form.querySelector(".field.invalid input")?.focus();
+          } else if (res.status === 400 && error && error.details && error.details.field === "phone") {
+            showFieldError("phone", messages.phone);
+            form.phone.focus();
+          } else if (res.status === 409) {
+            showFieldError("phone", "This phone number is already registered with us. We'll be in touch!");
+            form.phone.focus();
+          } else if (res.status === 429) {
+            showStatus("Too many registrations from your network right now. Please try again in an hour.");
+          } else {
+            showStatus("Something went wrong on our side. Please try again in a moment.");
+          }
+        } catch (_) {
+          showStatus("We couldn't reach the server. Check your connection and try again.");
+        } finally {
+          submit.disabled = false;
+          submit.textContent = "Register my interest";
+        }
+      });
+    </script>
+  </body>
 </html>
